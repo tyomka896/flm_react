@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="win1251"?>
+<options>
+  <name>Экспертная система 1</name>
+  <urovneyObrabotki>3</urovneyObrabotki>
+</options>
+<termMnogestvaInputLevel>
+  <id>1_1</id>
+  <name>Тип постройки</name>
+  <termsCount>3</termsCount>
+  <termsNames>
+    <term1>Общ. здание</term1>
+    <term2>Жилое здание</term2>
+    <term3>С/Х</term3>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>0</y1>
+    <x2>1</x2>
+    <y2>1</y2>
+    <x3>1</x3>
+    <y3>5</y3>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>0</y1>
+    <x2>3</x2>
+    <y2>1</y2>
+    <x3>3</x3>
+    <y3>5</y3>
+  </coords>
+  <coords>
+    <x1>4</x1>
+    <y1>0</y1>
+    <x2>5</x2>
+    <y2>2</y2>
+    <x3>6</x3>
+    <y3>2</y3>
+    <x4>7</x4>
+    <y4>0</y4>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#FF00D0</plotsColors>
+</termMnogestvaInputLevel>
+<termMnogestvaInputLevel>
+  <id>1_2</id>
+  <name>Материал</name>
+  <termsCount>3</termsCount>
+  <termsNames>
+    <term1>Дерево</term1>
+    <term2>Бетон</term2>
+    <term3>Кирпич</term3>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>0</y1>
+    <x2>1</x2>
+    <y2>1</y2>
+    <x3>2</x3>
+    <y3>0</y3>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>0</y1>
+    <x2>3</x2>
+    <y2>1</y2>
+    <x3>4</x3>
+    <y3>0</y3>
+  </coords>
+  <coords>
+    <x1>4</x1>
+    <y1>0</y1>
+    <x2>5</x2>
+    <y2>1</y2>
+    <x3>6</x3>
+    <y3>0</y3>
+  </coords>
+  <plotsColors>#00FF00</plotsColors>
+  <plotsColors>#E30202</plotsColors>
+  <plotsColors>#FF00D0</plotsColors>
+</termMnogestvaInputLevel>
+<termMnogestvaInputLevel>
+  <id>1_3</id>
+  <name>Климат</name>
+  <termsCount>3</termsCount>
+  <termsNames>
+    <term1>Холодный</term1>
+    <term2>Прохладный</term2>
+    <term3>Теплый</term3>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>0</y1>
+    <x2>1</x2>
+    <y2>1</y2>
+    <x3>2</x3>
+    <y3>0</y3>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>0</y1>
+    <x2>3</x2>
+    <y2>1</y2>
+    <x3>4</x3>
+    <y3>0</y3>
+  </coords>
+  <coords>
+    <x1>4</x1>
+    <y1>0</y1>
+    <x2>5</x2>
+    <y2>1</y2>
+    <x3>6</x3>
+    <y3>0</y3>
+  </coords>
+  <plotsColors>#00FF00</plotsColors>
+  <plotsColors>#E30202</plotsColors>
+  <plotsColors>#FF00D0</plotsColors>
+</termMnogestvaInputLevel>

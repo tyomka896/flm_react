@@ -1,0 +1,15 @@
+import Tree from 'react-tree-graph';
+
+let data = {
+    name: 'Parent',
+    children: [{
+        name: 'Child One'
+    }, {
+        name: 'Child Two'
+    }]
+};
+
+<Tree
+    data={data}
+    height={400}
+    width={400}/>;

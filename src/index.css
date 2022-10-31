@@ -1,0 +1,174 @@
+
+@import url("~vis/dist/vis.css");
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+h3{
+  margin-bottom: 0px; /* Отрицательный отступ между заголовком и текстом */
+  margin-top: 0px; 
+ }
+ h5{
+  margin-bottom: 0px; /* Отрицательный отступ между заголовком и текстом */
+  margin-top: 0px; 
+ }
+form
+{
+    float:bottom;
+    margin-left: 50px; 
+}
+p.dline {
+  line-height: 1.5;
+ }
+p {
+  line-height: 0.9em;
+  
+ }
+
+.someDiv {
+  margin-bottom: 0px;
+  border-width: 2px;
+  border-color: aqua !important;
+  width: 200px;
+  height: 100px;
+  display: inline-block;
+  margin-left: 10px;
+
+}
+
+.moyDIV {
+  vertical-align:bottom;
+ 
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 150px;
+  height: 2px;
+  display: inline-block;
+  margin:0px;
+
+}
+
+.inp1 {
+  width: 350px;
+}
+
+
+input {
+margin-left:0px;
+margin-right:10px;
+margin-bottom:0px;
+width: 123px;
+border: 2px solid;
+
+}
+
+label.myLabel {
+
+
+  font-size: 18px;
+  font-weight: 800;
+}
+input.termsValue {
+  margin-left:0px;
+  margin-right:0px;
+  margin-bottom:10px;
+  width: 30px;
+  border: 2px solid;
+  
+  }
+  div.inputsPointsPlot {
+    margin-left:0;
+    margin-right:10px;
+    margin-bottom:0px;
+    width:1400px;
+    border: 0px solid;
+    display: inline-block;
+    
+    }
+    div.TMselected {
+      margin-left:10;
+      margin-right:10px;
+      margin-bottom:0px;
+      width:800x;
+      border: 2px solid;
+      
+      }
+.wrapper {
+  padding-top: 5rem;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.borderLand{
+border-color:#c4c4c4 !important;
+border-bottom: 10px solid;
+border-top: 10px solid;
+border-right: 10px solid;
+border-left: 10px solid;
+margin-left:10px;
+}
+.plotInput {
+  width: 45px;
+
+}
+div.blockMy {
+  vertical-align:top;
+  margin-left:0px;
+margin-right:0px;
+margin-top: px;;
+margin-bottom:0px;
+border:1px solid;
+display: inline-block;
+}
+div.Plot {
+   margin-top:20px;
+  margin-left:0px;
+  margin-right:0px;
+  margin-bottom:2px;
+}
+
+div.mailContent
+ { margin: 10px; font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.33; }
+
+ div.Blochek
+ { margin: 10px;
+   font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+   font-size: 14px;
+    line-height: 1.5;
+  background-color: rgb(252, 249, 249); }
+  div.Razrez
+  {background-color: rgb(126, 127, 129);
+
+
+
+  }
+  button.odin {
+    color:brown;
+    font-weight: bold;
+    
+  }
+  input.odin {
+    width:20px;
+    height: 20px;
+    border:1px solid;
+    
+  }
+  button.konec {
+    color:green;
+    font-weight: bold;
+    
+  }
+  
+
+
