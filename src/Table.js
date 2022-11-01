@@ -11,39 +11,18 @@ import { mkdirSync } from "fs";
 export  default function Table(model, levelPravil, changeList, changeCoeff,selectedTM) {
   let tempus=[[]]
   let gettingLevelPravil = levelPravil
+
  
   let select = selectedTM
   if (select == undefined)
   select = 1
- 
 
-  console.log(select)
   if(typeof(gettingLevelPravil) != "string")
   {
     gettingLevelPravil =1 
   
   }
-  function cartesian(arg) {
-    var r = [], args = arg;
-    args.reduceRight(function(cont, factor, i) {
-        return function(arr) {
-            for (var j=0, l=factor.length; j<l; j++) {
-                var a = arr.slice(); // clone arr
-                a[i] = factor[j];
-                cont(a);
-            }
-        };
-    }, Array.prototype.push.bind(r))(new Array(args.length));
-let t = r.length
-
-
-   for(let i = 0; i < t; i++)
-    {
-      r[i].unshift(i+1)
-    }
-   
-    return r;
-}
+  
 function cartesian2(arg) {
   var r = [], args = arg;
   args.reduceRight(function(cont, factor, i) {
@@ -55,49 +34,36 @@ function cartesian2(arg) {
           }
       };
   }, Array.prototype.push.bind(r))(new Array(args.length));
-let t = r.length
-
-
- 
+let t = r.length 
   return r;
 }
-
-//посмотреть терм-множ. у входного 
-//посмотреть терм-множ. у обработки-1
-//это будет названия столбцов 
-//console.log(model.termMnogestvaInputLevel[0])
-
 let my = model
-//if(model == null)
-if(my.TM == undefined)
-my = { 
-  
-  
-  options: {
-    name: "Экспертная система 1",
-    urovneyObrabotki: 3,
 
+
+if(my.TM == undefined)
+my = {   
+  options: {
+    name: "tm 1",
+    urovneyObrabotki: 3,
   },
   TM: 
   [
-    //объект первого терм множества входа
     {
         id: '1',
-        name: 'Тип постройки',
+        name: '1212',
         termsCount:3,
-        termsNames: {term1: 'Общ. здание', term2: 'Жилое здание', term3:'С/Х',},
+        termsNames: {term1: '1212', term2: '1212', term3:'sd',},
         coords:[{x1:0, y1:0, x2:1, y2:1, x3:1, y3:5},
                 {x1:2, y1:0, x2:3, y2:1, x3:3, y3:5 },
                 {x1:4, y1:0, x2:5, y2:2, x3:6, y3:2, x4:7, y4:0 } ,       
               ],    
-              plotsColors:['#000000','#000000','#FF00D0',] ,     
-
+              plotsColors:['#000000','#000000','#FF00D0',] ,   
     },
     {
       id: '2',
-      name: 'Материал',
+      name: 'tm2',
       termsCount:3,
-      termsNames: {term1: 'Дерево', term2: 'Бетон', term3:'Кирпич',},
+      termsNames: {term1: 'dfdf', term2: 'dfdf', term3:'�dfdf',},
       coords:[{x1:0, y1:0, x2:1, y2:1, x3:2, y3:0},
               {x1:2, y1:0, x2:3, y2:1, x3:4, y3:0 },
               {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
@@ -107,9 +73,9 @@ my = {
     },
     {
       id: '3',
-      name: 'Климат',
+      name: 'dfdf',
       termsCount:3,
-      termsNames: {term1: 'Холодный', term2: 'Прохладный', term3:'Теплый',},
+      termsNames: {term1: 'dfdf', term2: 'dfdf', term3:'dfdf',},
       coords:[{x1:0, y1:0, x2:1, y2:1, x3:2, y3:0},
               {x1:2, y1:0, x2:3, y2:1, x3:4, y3:0 },
               {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
@@ -136,10 +102,6 @@ my = {
   ], }}
  
   const shapka= [];
- 
-  console.log(my)
-
-
 /*
 
 <th>№</th>
@@ -149,28 +111,91 @@ my = {
               <th>Email</th>
               <th>Actions</th>
 */
-  //уровень правил от входа - > обработка_1
-
-  let termsInputArray=[[]]
+  
   let termsInputArray2=[[]]
   let tempArray=[]
   let selectedArray=[]
-  let otarray=[]
-  let doarray=[]
-  otarray.push(my.TM[0])
-  otarray.push(my.TM[1])
-  doarray.push(my.TM[2])
+  let otarray=[
+    {
+          id: '1',
+          name: '1212',
+          termsCount:3,
+          termsNames: {term1: '1212', term2: '1212', term3:'sd',},
+          coords:[{x1:0, y1:0, x2:1, y2:1, x3:1, y3:5},
+                  {x1:2, y1:0, x2:3, y2:1, x3:3, y3:5 },
+                  {x1:4, y1:0, x2:5, y2:2, x3:6, y3:2, x4:7, y4:0 } ,       
+                ],    
+                plotsColors:['#000000','#000000','#FF00D0',] ,   
+      },
+      {
+        id: '2',
+        name: 'tm2',
+        termsCount:3,
+        termsNames: {term1: 'dfdf', term2: 'dfdf', term3:'�dfdf',},
+        coords:[{x1:0, y1:0, x2:1, y2:1, x3:2, y3:0},
+                {x1:2, y1:0, x2:3, y2:1, x3:4, y3:0 },
+                {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
+              ],    
+              plotsColors:['#00FF00','#E30202','#FF00D0',] ,     
+      },
+      {
+        id: '3',
+        name: 'dfdf',
+        termsCount:3,
+        termsNames: {term1: 'dfdf', term2: 'dfdf', term3:'dfdf',},
+        coords:[{x1:0, y1:0, x2:1, y2:1, x3:2, y3:0},
+                {x1:2, y1:0, x2:3, y2:1, x3:4, y3:0 },
+                {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
+              ],    
+              plotsColors:['#00FF00','#E30202','#FF00D0',] ,   
+      },
+    ]  
+  let doarray=[   
+      {
+          id: '1',
+          name: '1212',
+          termsCount:3,
+          termsNames: {term1: '1212', term2: '1212', term3:'sd',},
+          coords:[{x1:0, y1:0, x2:1, y2:1, x3:1, y3:5},
+                  {x1:2, y1:0, x2:3, y2:1, x3:3, y3:5 },
+                  {x1:4, y1:0, x2:5, y2:2, x3:6, y3:2, x4:7, y4:0 } ,       
+                ],    
+                plotsColors:['#000000','#000000','#FF00D0',] ,    
+      },
+      {
+        id: '2',
+        name: 'tm2',
+        termsCount:3,
+        termsNames: {term1: 'dfdf', term2: 'dfdf', term3:'�dfdf',},
+        coords:[{x1:0, y1:0, x2:1, y2:1, x3:2, y3:0},
+                {x1:2, y1:0, x2:3, y2:1, x3:4, y3:0 },
+                {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
+              ],    
+              plotsColors:['#00FF00','#E30202','#FF00D0',] ,     
+      },
+      {
+        id: '3',
+        name: 'dfdf',
+        termsCount:3,
+        termsNames: {term1: 'dfdf', term2: 'dfdf', term3:'dfdf',},
+        coords:[{x1:0, y1:0, x2:1, y2:1, x3:2, y3:0},
+                {x1:2, y1:0, x2:3, y2:1, x3:4, y3:0 },
+                {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
+              ],    
+              plotsColors:['#00FF00','#E30202','#FF00D0',] ,     
+      },
+    ]     
+  //otarray.push(my.TM[0])
+  //otarray.push(my.TM[1])
+  //doarray.push(my.TM[2])
 
 if(model.TM!=undefined)
 {
   otarray = []
   doarray=[]
-  console.log(selectedTM)
-  let toNode = selectedTM
-
-  
-  let massivFrom =[]
-  //создаем массив otKokogo
+  let toNode = selectedTM  
+  let massivFrom =[] 
+   
   for(let i = 0; i < my.graph.edges.length; i ++)
         {
           if(my.graph.edges[i].to == Number(toNode))
@@ -180,7 +205,8 @@ if(model.TM!=undefined)
         }
   
         for(let i = 0; i <massivFrom.length; i ++)
-        {for(let j = 0; j <my.TM.length; j ++)
+        {
+          for(let j = 0; j <my.TM.length; j ++)
           {
             if(my.TM[j].id == Number(massivFrom[i]-1))
           {
@@ -190,10 +216,6 @@ if(model.TM!=undefined)
           }
   
         }
-  
-        
-        
-
         for(let i = 0; i < my.TM.length; i ++)
         {
           if(my.TM[i].id == Number(toNode-1))
@@ -201,40 +223,40 @@ if(model.TM!=undefined)
             doarray.push(my.TM[i])
           }
         }
-        console.log(doarray)
-
+} else {
 }
-  
-
-
-  //делаем массив всех термов из терммножества входа
-  
-  
  
-  let otKokogo = otarray//eval("my.TM")// dfdf
-  let doKokogo = doarray//eval("my.termMnogestvaOutputLevel") 
-  shapka.push(<th>№</th>)
-  for(let i = 0; i < otKokogo.length; i++)
+  
+   let otKokogo = otarray//eval("my.TM")// dfdf
+  let doKokogo =doarray
+
+ 
+  
+  shapka.push(<th>tm</th>)
+  for(let i = 0; i < otarray.length; i++)
   {
-   let  name = otKokogo[i].name
-shapka.push(<th>{otKokogo[i].name}</th>)
+   let  name = otarray[i].name
+shapka.push(<th>{otarray[i].name}</th>)
 
   }
 
-  for(let i = 0; i < doKokogo.length; i++)
+  for(let i = 0; i < doarray.length; i++)
   {
-   let  name = doKokogo[i].name
-shapka.push(<th>{doKokogo[i].name}</th>)
+   let  name = doarray[i].name
+shapka.push(<th>{doarray[i].name}</th>)
 
   }
 
  
   for(let i = 0; i < otKokogo.length; i++)
 {    
+  
   for(let j = 0; j < otKokogo[i].termsCount; j++)
-  {     
-    let termName = eval("otKokogo[i].termsNames['term"+(j+1)+"']")     
-    tempArray[j] = termName       
+  {    
+    console.log(otKokogo[i].termsNames)
+    let termName = otKokogo[i].termsNames['term'+String(j+1)]     
+    tempArray[j] = termName
+           
   } 
     termsInputArray2[i]=(tempArray)    
     tempArray = []  
@@ -253,7 +275,7 @@ termsInputArray2.map((el)=> (el.push("...")))
 
     for(let j = 0; j <doKokogo[i].termsCount; j++)
     {     
-      let termName = eval("doKokogo[i].termsNames['term"+(j+1)+"']")     
+      let termName = doKokogo[i].termsNames['term'+String(j+1)]      
       tempArray[j] = {id: (j+1), name :termName}     
 
     } 
@@ -266,7 +288,7 @@ for(let i = 0; i < doKokogo.length; i++)
 {    let tempArray=[]
   for(let j = 0; j < doKokogo[i].termsCount; j++)
   {     
-    let termName = eval("doKokogo[i].termsNames['term"+(j+1)+"']")     
+    let termName = doKokogo[i].termsNames['term'+String(j+1)]     
     tempArray[j] = {id: (j+1), name :termName}     
 
   } 

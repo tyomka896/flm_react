@@ -1,21 +1,12 @@
 import Graph from "react-graph-vis";
-import React, { useImperativeHandle, useState,useEffect } from "react";
+import React, {  useState,useEffect } from "react";
 import ReactDOM from "react-dom";
 import './index.css';
 import App from './Plots.js';
 import Table from './Table.js';
 import "react-vis/dist/style.css";
 import axios from "axios";
-const { XMLParser, XMLBuilder, XMLValidator} = require("fast-xml-parser");
-
-
-
-var uuid = require("uuid-v4");
-var myUUID = uuid();
-let inputArray = [<input id="1" />, <input id="2" />, <input id="3" />]
-
-
-
+const { XMLParser} = require("fast-xml-parser");
 
 let inputLevelCounter = 0;
 let input_Name;
