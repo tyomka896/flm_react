@@ -28,10 +28,6 @@ let input_Name;
     esModel.graph.nodes.push({ x: x, y: y,color: "#F5DEB3", id: esModel.counter, font: { size: 10 }, size: 30, label: "", title: "", shape: 'dot', physics: 'false', group:3 }       
     )
   };
-
-
-
-
   function fl(){
 
     console.log( networks.network);
@@ -44,8 +40,7 @@ let input_Name;
         tooltipDelay: 10,
         selectable: true,
         multiselect: true,
-        dragView: true,
-  
+        dragView: true,  
       },
       manipulation: {
         enabled: true,
@@ -54,10 +49,8 @@ let input_Name;
           editEdge: false,
           addEdge: function (data, callback) {
             esModel.graph.edges.push(data)
-            callback(data);
-           
+            callback(data);           
         let colorChanges = {}
-
         for(let i = 0; i < esModel.graph.nodes.length; i++)
 {
   colorChanges[esModel.graph.nodes[i].id] = [0,0]
@@ -82,29 +75,24 @@ for(let i = 0; i <esModel.graph.nodes.length; i++)
   if(colorChanges[esModel.graph.nodes[i].id][0]== 1&&colorChanges[esModel.graph.nodes[i].id][1]== 1 )
   {
     esModel.graph.nodes[i].color = "#DA70D6" 
-
   }
   if(colorChanges[esModel.graph.nodes[i].id][0]== 0&&colorChanges[esModel.graph.nodes[i].id][1]== 1 )
   {
     esModel.graph.nodes[i].color = "#FF0000"
-
   }
 
 }
 for(let i = 0; i <esModel.graph.nodes.length; i++)
 { console.log(esModel.graph.nodes[i].color)
 if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nodes[i].color) == "#DA70D6"  )
-  {
-   
+  {   
     esModel.methods.UpdatePravila(esModel.graph.nodes[i].id)
 }
 }
 setEsModel(esModel)
-console.log(esModel.pravila_end)
 setEsModel(esModel)
 networks.network.setData({nodes:esModel.graph.nodes, edges:esModel.graph.edges})
-            networks.network.addEdgeMode();
-            
+            networks.network.addEdgeMode();            
         },
         deleteEdge: function (data, callback) {
 
@@ -115,9 +103,7 @@ networks.network.setData({nodes:esModel.graph.nodes, edges:esModel.graph.edges})
             if (esModel.graph.edges[i].id == data.edges[0]) {
               esModel.graph.edges.splice(i,1)
               break
-            }
-           
-          
+            }          
           }
           
           let colorChanges = {}
@@ -128,16 +114,13 @@ networks.network.setData({nodes:esModel.graph.nodes, edges:esModel.graph.edges})
   }
   for(let i = 0; i < esModel.graph.edges.length; i++)
   {colorChanges[esModel.graph.edges[i].to][1]=1
-    colorChanges[esModel.graph.edges[i].from][0]=1
-    
-  
+    colorChanges[esModel.graph.edges[i].from][0]=1  
   }
  
   esModel.pravila_end = []
   setEsModel(esModel)
   for(let i = 0; i <esModel.graph.nodes.length; i++)
-  {
-    
+  {    
     if(colorChanges[esModel.graph.nodes[i].id][0]== 1&&colorChanges[esModel.graph.nodes[i].id][1]== 0 )
     {
       esModel.graph.nodes[i].color = "#008000" 
@@ -158,20 +141,16 @@ networks.network.setData({nodes:esModel.graph.nodes, edges:esModel.graph.edges})
   }
   for(let i = 0; i <esModel.graph.nodes.length; i++)
   {
-if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nodes[i].color) == "#DA70D6"  )
+  if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nodes[i].color) == "#DA70D6"  )
     {
 
       esModel.methods.UpdatePravila(esModel.graph.nodes[i].id)
   }
 }
   setEsModel(esModel)
-
-
-      networks.network.setData({nodes:esModel.graph.nodes, edges:esModel.graph.edges})
-          
+      networks.network.setData({nodes:esModel.graph.nodes, edges:esModel.graph.edges})          
       },
-        deleteNode: function (data, callback) {
-          
+        deleteNode: function (data, callback) {          
           callback(data);
           let toUninstall = []
           
@@ -181,14 +160,12 @@ if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nod
             { 
               toUninstall.push(i)              
             }   
-         }
-         
-         console.log(data.nodes[0])
+         }         
          for(let i = 0; i <esModel.graph.nodes.length; i++)
          {
           if( esModel.graph.nodes[i].id == data.nodes[0] && esModel.graph.nodes[i].color == "#F5DEB3")
-          {willUpdate = true
-          
+          {
+            willUpdate = true          
           }
 
           if(esModel.graph.nodes[i].id == data.nodes[0] && (esModel.graph.nodes[i].color == "#008000" || esModel.graph.nodes[i].color == "#DA70D6"|| esModel.graph.nodes[i].color == "#FF0000"))
@@ -207,16 +184,14 @@ if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nod
           {
             if(esModel.graph.nodes[i].id == data.nodes[0])
             {
-              esModel.graph.nodes.splice(i, 1);
-              
+              esModel.graph.nodes.splice(i, 1);              
             }
           }
           for(let i = 0; i <esModel.TM.length; i++ )
           {
             if(esModel.TM[i].id == (data.nodes[0]-1))
             { 
-              esModel.TM.splice(i, 1);
-            
+              esModel.TM.splice(i, 1);            
             }
           }
           esModel.counter--
@@ -225,24 +200,17 @@ if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nod
           for(let i = 0; i <esModel.graph.nodes.length; i++ )
           {
             newNames[esModel.graph.nodes[i].id] = i+1
-              esModel.graph.nodes[i].id = i+1;
-             
-            
+              esModel.graph.nodes[i].id = i+1;           
           }
           for(let i = 0; i <esModel.TM.length; i++ )
-          {
-           
-              esModel.TM[i].id = i
-             
-            
+          {           
+              esModel.TM[i].id = i            
           }
       
           setEsModel(esModel)
-          console.log(newNames)
           for(let i = 0; i <esModel.graph.edges.length; i++ )
           {
-            esModel.graph.edges[i].from= newNames[esModel.graph.edges[i].from]
-          
+            esModel.graph.edges[i].from= newNames[esModel.graph.edges[i].from]          
             esModel.graph.edges[i].to= newNames[esModel.graph.edges[i].to]
           }
           let colorChanges = {}
@@ -253,9 +221,7 @@ if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nod
   }
  for(let i = 0; i < esModel.graph.edges.length; i++)
   {colorChanges[esModel.graph.edges[i].to][1]=1
-    colorChanges[esModel.graph.edges[i].from][0]=1
-    
-  
+    colorChanges[esModel.graph.edges[i].from][0]=1  
   }
   
   setEsModel(esModel)
@@ -264,40 +230,30 @@ if(String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nod
     
     if(colorChanges[esModel.graph.nodes[i].id][0]== 1&&colorChanges[esModel.graph.nodes[i].id][1]== 0 )
     {
-      esModel.graph.nodes[i].color = "#008000" 
-  
+      esModel.graph.nodes[i].color = "#008000"   
     }
     if(colorChanges[esModel.graph.nodes[i].id][0]== 1&&colorChanges[esModel.graph.nodes[i].id][1]== 1 )
     {
-      esModel.graph.nodes[i].color = "#DA70D6"
-  
+      esModel.graph.nodes[i].color = "#DA70D6"  
     }
     if(colorChanges[esModel.graph.nodes[i].id][0]== 0&&colorChanges[esModel.graph.nodes[i].id][1]== 1 )
     {
-      esModel.graph.nodes[i].color = "#FF0000"
-  
+      esModel.graph.nodes[i].color = "#FF0000"  
     }
     if(colorChanges[esModel.graph.nodes[i].id][0]== 0&&colorChanges[esModel.graph.nodes[i].id][1]== 0 )
     {
-      esModel.graph.nodes[i].color = "#F5DEB3"
-     
-  
+      esModel.graph.nodes[i].color = "#F5DEB3" 
     }
   
   }
   for(let i = 0; i <esModel.graph.nodes.length; i++)
   {
 if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nodes[i].color) == "#DA70D6" ) && !willUpdate )
-    {
-
-      esModel.methods.UpdatePravila(esModel.graph.nodes[i].id)
-  }
+    {      esModel.methods.UpdatePravila(esModel.graph.nodes[i].id) }
 }
   setEsModel(esModel)
      networks.network.setData({nodes:esModel.graph.nodes, edges:esModel.graph.edges})
   RenderSelectedTM(0)
-          
-
         }
      },
       layout: {
@@ -308,8 +264,7 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
           blockShifting: false,
           levelSeparation: 180
         }
-      },
-   
+      },   
       edges: {
         color: "#000000"
       },
@@ -330,8 +285,6 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
     email: "",
   });
   const [editContactId, setEditContactId] = useState(null);
-
-
   const [xmlFiles, setXmlFiles] = useState([]);
   const [xmlName, setXmlName] = useState([]);
   const [indexBodyHtml, setindexBodyHtml] = useState([]);
@@ -345,10 +298,6 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
     fetch('/api')
     .then(response => response.json()
     .then(response => setData(response.message)))
-/*
-    var uint8array = new TextEncoder().encode(data);
-var string = new TextDecoder().decode(uint8array)
-setData(data)*/
   } )
   const [esModel, setEsModel] = useState({
     
@@ -445,9 +394,6 @@ setData(data)*/
         let obr1 = []
         let obrabotka = {}
         let krasn = []
-
-
-
         for(let i = 0; i < esModel.graph.nodes.length; i ++)
         {        
           if(esModel.graph.nodes[i].color == "#008000")
@@ -470,7 +416,6 @@ setData(data)*/
         obrabotka['input'] = zelen
         obrabotka['output'] = krasn
         let spisok = {}
-
         urovniObrabotki = {}
         for(let i =0; i<fiolet.length; i++)
         {
@@ -500,7 +445,8 @@ setData(data)*/
             for(let y=0; y< esModel.graph.nodes.length; y++)
             {
               if( esModel.graph.nodes[y].id ==urovniObrabotki[key][i] )              
-              {esModel.graph.nodes[y].y = (-100 * Number(key))
+              {
+                esModel.graph.nodes[y].y = (-100 * Number(key))
                 esModel.graph.nodes[y].x =-225+(150* (i+1))                             
               }  
             }
@@ -650,7 +596,6 @@ changeEsName: (value) => {
         esModel.TM[TmNumber].plotsColors[TermNumber] = color
         setEsModel(esModel)
         RenderSelectedTM(Number(TmNumber))
-
       },
        deletePointplot: (TmNumber, TermNumber) => {       
         let deleteNumber = Object.keys(esModel.TM[TmNumber].coords[TermNumber]).length/2; 
@@ -659,7 +604,6 @@ changeEsName: (value) => {
         setEsModel(esModel)
         RenderSelectedTM(Number(TmNumber))
        },
-
         addNewPointPlot: (TmNumber, TermNumber) => {
           let newPointNumber = Object.keys(esModel.TM[TmNumber].coords[TermNumber]).length/2+1;
           let newCoordsNameX = "x"+newPointNumber;
@@ -669,8 +613,7 @@ changeEsName: (value) => {
           setEsModel(esModel) 
           RenderSelectedTM(Number(TmNumber))
          },
-       changeCoordsValue: (TmNumber, TermNumber, key,value) => { 
-      
+       changeCoordsValue: (TmNumber, TermNumber, key,value) => {       
           esModel.TM[TmNumber].coords[TermNumber][key] = Number(value)
           setEsModel(esModel)
           RenderSelectedTM(Number(TmNumber))
@@ -684,7 +627,8 @@ changeEsName: (value) => {
         for(let i = 0; i <esModel.graph.nodes.length; i++)
         {
          if( esModel.graph.nodes[i].id == (Number(TmNumber)+1) && esModel.graph.nodes[i].color == "#F5DEB3")
-         {willUpdate = true          
+         {
+          willUpdate = true          
          }
 
          if(esModel.graph.nodes[i].id == (Number(TmNumber)+1) && (esModel.graph.nodes[i].color == "#008000" || esModel.graph.nodes[i].color == "#DA70D6"|| esModel.graph.nodes[i].color == "#FF0000"))
@@ -701,7 +645,6 @@ changeEsName: (value) => {
         let popup = ""
         for(let i =0; i< esModel.TM[TmNumber].termsCount; i++)
         {
-
           popup+=""+esModel.TM[TmNumber].termsNames["term"+String(i+1)]+"\n"
         }
         esModel.graph.nodes[TmNumber].title=popup
@@ -713,7 +656,7 @@ changeEsName: (value) => {
      if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.nodes[i].color) == "#DA70D6" )&&!willUpdate )
           {      
             esModel.methods.UpdatePravila(esModel.graph.nodes[i].id)
-        }
+          }
       }
         setEsModel(esModel)
        RenderSelectedTM(Number(TmNumber))
@@ -724,7 +667,8 @@ changeEsName: (value) => {
         for(let i = 0; i <esModel.graph.nodes.length; i++)
         {
          if( esModel.graph.nodes[i].id == (Number(TmNumber)+1) && esModel.graph.nodes[i].color == "#F5DEB3")
-         {willUpdate = true
+         {
+          willUpdate = true
          }
 
          if(esModel.graph.nodes[i].id == (Number(TmNumber)+1) && (esModel.graph.nodes[i].color == "#008000" || esModel.graph.nodes[i].color == "#DA70D6"|| esModel.graph.nodes[i].color == "#FF0000"))
@@ -755,8 +699,7 @@ changeEsName: (value) => {
         }
       }   
         setEsModel(esModel)
-         RenderSelectedTM(Number(TmNumber))
-         
+         RenderSelectedTM(Number(TmNumber))         
        },
       changeTermName: (TmNumber, TermNumber, newName) => {       
         esModel.TM[TmNumber].termsNames["term"+TermNumber] = newName
@@ -773,7 +716,7 @@ changeEsName: (value) => {
 
       AddTMInputLevel:(id) =>
       {
-          esModel.TM.push(  {
+          esModel.TM.push({
           id: id,
           name: '',
           termsCount:2,
@@ -781,8 +724,7 @@ changeEsName: (value) => {
           coords:[{x1:0, y1:0, x2:0, y2:1, x3:1, y3:1,x4:1,y4:0},
                   {x1:1, y1:0, x2:1, y2:1, x3:2, y3:1,x4:2,y4:0 },       
                 ],    
-                plotsColors:['#000000','#000000',] ,     
-  
+                plotsColors:['#000000','#000000',] ,   
         },)
         setEsModel(esModel)
       },      
@@ -868,24 +810,18 @@ function getLevelTMObrabotki(obj, zelen) {
             }
         };
     }, Array.prototype.push.bind(r))(new Array(args.length));
-let t = r.length
-
-
- 
+let t = r.length 
     return r;
 }
 
  function SaveToXMLOnComputer()
  {
-  
-
   let tempXML = {}
   if(esModel.TM.length == 1 )
   {
     tempXML["TM"]= []
     tempXML["TM"].push(esModel.TM)
   }
-
   else tempXML["TM"] = esModel.TM
 
 
@@ -903,11 +839,9 @@ pravilaDict[st] = esModel.pravila_end[t]
 
 if(pravilaDict[key] == "")
 {pravilaDict[key] = ''
-
 }
 pravilaDict['n'+key] = pravilaDict[key]
 delete pravilaDict[key]
-
   }
   console.log(pravilaDict)
   tempXML["pravila_end"] = pravilaDict1
@@ -921,8 +855,6 @@ delete pravilaDict[key]
   for (var key in esModel.structure)
   {
     tempStructure['n_'+key] = esModel.structure[key]
-
-
   }
   tempXML["structure"] = tempStructure
 
@@ -951,23 +883,15 @@ delete pravilaDict[key]
   setindexBodyHtml2(okolo)
 
  }
-
-
  function ConsoleXml(xmlStr)
 {
-
-/* 
-window.document.write(xmlStr);*/
 console.log(xmlStr)
 const a = document.createElement("a");
-document.body.appendChild(a); // Required for this to work in FireFox
+document.body.appendChild(a); 
 a.download = "FLMmodel.xml"
     const file = new File([xmlStr], "FLMmodel.xml",{ type: 'text/xml'});
-    console.log(file)
     sendToServer( file)
 } 
-
-
 function XmlOnServer()
 {
 //let f = new File("./temp.xml")
@@ -986,10 +910,9 @@ axios.get("/xmlS/filedddd.xml", {
 })
 .catch((response) => {
   console.log('FAILURE!!'+response);
-})
-; 
-
+}); 
 }
+
 const changeTermName = event => {    
   input_Name = event.target.value
 
@@ -1020,8 +943,7 @@ const changeCoordsValues = event => {
   };
   const addNewPointPlot= event => { 
     if(event.target.id.split("_")[0].match(/[a-zA-Z]+/g)[0] == "termInput"){
-    esModel.methods.addNewPointPlot(event.target.id.split("_")[0].match(/\d+/g)[0],event.target.id.split("_")[1]-1);
-        
+    esModel.methods.addNewPointPlot(event.target.id.split("_")[0].match(/\d+/g)[0],event.target.id.split("_")[1]-1);        
   }        
   }
 
@@ -1230,10 +1152,7 @@ event.preventDefault();
  .then(res => { // then print response status
   
   setXmlName( ""+xmlFiles.name)
-  console.log(""+xmlFiles.name)
-
-  //Р РЋРІР‚С›Р В Р’В°Р В РІвЂћвЂ“Р В Р’В» Р В Р вЂ¦Р В Р’В° Р РЋР С“Р В Р’ВµР РЋР вЂљР В Р вЂ Р В Р’ВµР РЋР вЂљР В Р’Вµ Р РЋРІР‚С™Р В Р’ВµР В РЎвЂ”Р В Р’ВµР РЋР вЂљР РЋР Р‰ Р В Р вЂ¦Р РЋРЎвЂњР В Р’В¶Р В Р вЂ¦Р В РЎвЂў Р В Р’ВµР В РЎвЂ“Р В РЎвЂў Р В РЎвЂўР РЋРІР‚С™Р В РЎвЂќР РЋР вЂљР РЋРІР‚в„–Р РЋРІР‚С™Р РЋР Р‰ Р В РЎвЂ�Р В РЎвЂ”Р В Р’В°Р РЋР вЂљР В Р’В°Р В РЎпїЅР В Р’ВµР РЋРІР‚С™Р РЋР вЂљР РЋРІР‚в„– Р В Р’В·Р В Р’В°Р В Р вЂ¦Р В Р’ВµР РЋР С“Р РЋРІР‚С™Р В РЎвЂ� Р В Р вЂ  Р В РЎпїЅР В РЎвЂўР В РўвЂ�Р В Р’ВµР В Р’В»Р РЋР Р‰
-
+  
   const iconv = require('iconv-lite');
 const axios = require('axios').default;
 axios.get("/xmlS/FLMmodel.xml", {  
@@ -1246,8 +1165,7 @@ axios.get("/xmlS/FLMmodel.xml", {
   let jObj = parser.parse(encodedData)
 
   setEsModel(esModel)
-  //Р В Р’В·Р В Р’В°Р В РЎпїЅР В Р’ВµР В Р вЂ¦Р РЋР РЏР В Р’ВµР В РЎпїЅ  Р В РўвЂ�Р В Р’В°Р В Р вЂ¦Р В Р вЂ¦Р РЋРІР‚в„–Р В Р’Вµ Р В РЎвЂ�Р В Р’В· Р РЋРІР‚С›Р В Р’В°Р В Р’В»Р В РІвЂћвЂ“Р В Р’В° XML
-
+  
   if(jObj.TM.length == undefined)
   {esModel.TM =[]
    esModel.TM[0] = jObj.TM
@@ -1257,16 +1175,12 @@ axios.get("/xmlS/FLMmodel.xml", {
   esModel.graph= jObj.graph
   esModel.counter = jObj.counter
   esModel.options = jObj.options
- 
-
-let tempStructure = {}
+  let tempStructure = {}
   for (let i =0; i < Object.keys(jObj.structure).length; i++)
   {   
-
 //jObj.structure[Object.keys(jObj.structure)[i].split('_')[1]] = jObj.structure[Object.keys(jObj.structure)[i]]
   //  delete jObj.structure[Object.keys(jObj.structure)[i]]
   tempStructure[Object.keys(jObj.structure)[i].split('_')[1]] = jObj.structure[Object.keys(jObj.structure)[i]]
-
   }
   
   esModel.structure = tempStructure
@@ -1275,48 +1189,32 @@ let tempStructure = {}
   {   
     esModel.pravila_end[i] = jObj.pravila_temp['n'+(i)]
   }
-   console.log(esModel)
- setEsModel(esModel)  
-  //RenderSelectedTM(0)
+  setEsModel(esModel)  
   RenderOptionsMenu()
 
 })
 .catch((response) => {
   console.log('FAILURE!!'+response);
-})
-
-  })
-
- 
+})}) 
   }
 
   const handleFileSelect = (event) => {
     setXmlFiles(event.target.files[0])
   }
-
-
-
-
 let inp_termMn_1 = 8;
-/*    */
-
 /*
-<button id = "1" onClick={ConsoleXml}> XML</button>
-    <button id = "1" onClick={SaveModelToXML}> TO XML</button>
+<button  onClick={ConsoleXml}> XML</button>
+    <button  onClick={SaveModelToXML}> TO XML</button>
     <input type="file" id="myFile" onChange={(e)=>UploadXML(e)} />
-
 */
-
- //{inpListModel.termMnogestvaInputLevel[0].name}
-  return (  
-  
-     <div>
-    <button id = "1" onClick={SaveToXMLOnComputer} >SAVE MODEL TO COMPUTER</button>
-    <button id = "1" onClick={esModel.methods.ChangeX} >SORT</button>    
-    <button id = "1" onClick={RenderOptionsMenu} >OPTIONS</button>
-    <button id = "1" onClick={RenderModelingMenu} > MODELING</button>
-      <input type="file" onChange={handleFileSelect}/>
-      <button type="button"  onClick={handleSubmit} /> 
+  return (    
+    <div>
+    <button  onClick={SaveToXMLOnComputer} >SAVE MODEL TO COMPUTER</button>
+    <button  onClick={esModel.methods.ChangeX} >SORT</button>    
+    <button  onClick={RenderOptionsMenu} >OPTIONS</button>
+    <button  onClick={RenderModelingMenu} > MODELING</button>
+    <input type="file" onChange={handleFileSelect}/>
+    <button type="button"  onClick={handleSubmit} /> 
      
      
   <div class="Blochek" > <Graph id="graph" getNetwork={(network) => 
@@ -1327,13 +1225,8 @@ let inp_termMn_1 = 8;
     <div class="blockMy" >   {indexBodyHtml2}
     {!data ? "Loading data..." : data}
      </div >    
-     </div>
-     
+     </div>     
       );
-
-
-}
-///
-ReactDOM.render(<FlmTree />, document.getElementById("root"));
+}ReactDOM.render(<FlmTree />, document.getElementById("root"));
 
 
