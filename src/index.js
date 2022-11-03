@@ -855,7 +855,7 @@ let tempStructure = {} // esModel.structure
  tempXML["structure"] = tempStructure
 
      const file = new Blob([o2x(tempXML)],{ type: 'text/xml'});
-     const zapros = {"zapros":"{'1':'2','2':'-27.5','3':'-17.5','7':'9'}"}
+     const zapros = {"zapros":"{'1':'2','2':'-27.5','3':'-17.5'}"}
      setxmlModeling(file)
     const data = new FormData()
     data.append('zapros', JSON.stringify(zapros))
