@@ -286,6 +286,7 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
   });
   const [editContactId, setEditContactId] = useState(null);
   const [xmlFiles, setXmlFiles] = useState([]);
+  const [xmlModeling, setxmlModeling] = useState([]);
   const [xmlName, setXmlName] = useState([]);
   const [indexBodyHtml, setindexBodyHtml] = useState([]);
   
@@ -814,6 +815,56 @@ let t = r.length
     return r;
 }
 
+function SendXmlModelling()
+{
+ let tempXML = {}
+ if(esModel.TM.length == 1 )
+ {
+   tempXML["TM"]= []
+   tempXML["TM"].push(esModel.TM)
+ }
+ else tempXML["TM"] = esModel.TM
+ let pravilaDict = {}
+ let pravilaDict1 = {}
+ for(let t = 0; t< esModel.pravila_end.length; t++){
+let st = ""+t
+pravilaDict[st] = esModel.pravila_end[t]
+ }
+ pravilaDict1 = pravilaDict
+ for (var key in pravilaDict)
+ {
+
+if(pravilaDict[key] == "")
+{pravilaDict[key] = ''
+}
+pravilaDict['n'+key] = pravilaDict[key]
+delete pravilaDict[key]
+ }
+ tempXML["pravila_end"] = pravilaDict1
+ tempXML["pravila_temp"] = pravilaDict
+ tempXML["graph"] = esModel.graph
+ tempXML["counter"] = esModel.counter
+ tempXML["options"] = esModel.options
+
+
+let tempStructure = {} // esModel.structure
+ for (var key in esModel.structure)
+ {
+   tempStructure['n_'+key] = esModel.structure[key]
+ }
+ tempXML["structure"] = tempStructure
+
+     const file = new Blob([o2x(tempXML)],{ type: 'text/xml'});
+     setxmlModeling(file)
+    const data = new FormData()
+    data.append('file', xmlModeling)
+    axios.post("http://localhost:8000/upload", data, { 
+   })
+ .then(res => { 
+  })  
+
+}
+
  function SaveToXMLOnComputer()
  {
   let tempXML = {}
@@ -1141,6 +1192,10 @@ setXmlName( ""+xmlFiles.name)
 })
 }
 
+
+
+
+
  const handleSubmit =(event) => {
 
 event.preventDefault();
@@ -1153,7 +1208,7 @@ event.preventDefault();
   
   setXmlName( ""+xmlFiles.name)
   
-  const iconv = require('iconv-lite');
+const iconv = require('iconv-lite');
 const axios = require('axios').default;
 axios.get("/xmlS/FLMmodel.xml", {  
     responseType: 'arraybuffer',
@@ -1212,8 +1267,9 @@ let inp_termMn_1 = 8;
     <button  onClick={SaveToXMLOnComputer} >SAVE MODEL TO COMPUTER</button>
     <button  onClick={esModel.methods.ChangeX} >SORT</button>    
     <button  onClick={RenderOptionsMenu} >OPTIONS</button>
-    <button  onClick={RenderModelingMenu} > MODELING</button>
+    <button  onClick={RenderModelingMenu} > MODELING</button> 
     <input type="file" onChange={handleFileSelect}/>
+    <button  onClick={SendXmlModelling} > TEST_POST</button>
     <button type="button"  onClick={handleSubmit} /> 
      
      
