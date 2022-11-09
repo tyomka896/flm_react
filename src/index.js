@@ -294,14 +294,14 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
   window.onbeforeunload = function() {
     return "A XHR request is pending, are you sure you want to leave ?";
 }
-  const [data, setData] = useState(null)
+  const [dataS, setData] = useState(null)
   useEffect(() => {
     fetch('/api')
     .then(response => response.json()
     .then(response => setData(response.message)))
   } )
   const [esModel, setEsModel] = useState({
-    
+    zapros :{},
     options: {
       Name:'',
       Author:'',
@@ -367,7 +367,23 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
       },
     },
     methods:
-    { ChangeCoeff:(row, pos, value, nymberTM) =>
+    
+    {  DefZapros:(TmNumber) =>
+      {
+        esModel.zapros[String(TmNumber)] = "1"
+        setEsModel(esModel)
+      },
+      SetZapros:(TmNumber, value) =>
+      {
+
+        
+        esModel.zapros[String(TmNumber)] = value
+        setEsModel(esModel)
+        console.log(esModel.zapros)
+        //RenderModelingMenu()
+
+      },
+      ChangeCoeff:(row, pos, value, nymberTM) =>
       {
       let urovenPrav
       urovenPrav = eval("esModel.pravila_end["+(Number(nymberTM))+"]")
@@ -855,14 +871,17 @@ let tempStructure = {} // esModel.structure
  tempXML["structure"] = tempStructure
 
      const file = new Blob([o2x(tempXML)],{ type: 'text/xml'});
-     const zapros = {"zapros":"{'1':'2','2':'-27.5','3':'-17.5'}"}
+     const zapros = esModel.zapros // {'1':'1.35','2':'1','3':'1'}
      setxmlModeling(file)
     const data = new FormData()
     data.append('zapros', JSON.stringify(zapros))
-    data.append('file', xmlModeling)
-    axios.post("api/study/flm-builder", data, { 
+    data.append('file', file)
+    axios.post("https://aesfu.ru/api/study/flm-builder", data, { 
    })
  .then(res => { 
+  console.log(res.data.length)
+   setData(res.data) 
+   RenderModelingMenu(res.data)
   })  
 
 }
@@ -925,7 +944,6 @@ delete pravilaDict[key]
  {
  let uroven = 0
  let urovniPravil = []
- console.log(arg)
   let okolo = [] 
   okolo.push(<div class = "Blochek">
  
@@ -1019,9 +1037,22 @@ const RenderOptionsMenu = selectedIndex => {
 
   //
 }
+const ChangeZapros = selectedIndex => {
+  
+ // console.log(selectedIndex.target.id + " value = "+String(selectedIndex.target.selectedIndex+1))
 
+ esModel.methods.SetZapros(selectedIndex.target.id, String(selectedIndex.target.selectedIndex+1))
+}
+
+const ChangeZaprosInput = selectedIndex => {
+  
+ //console.log(selectedIndex.target.name+"   "+String(selectedIndex.target.value))
  
-  const RenderModelingMenu = selectedIndex => {
+  esModel.methods.SetZapros(selectedIndex.target.name, String(selectedIndex.target.value))
+ }
+
+
+  const RenderModelingMenu = data => {
     let indexB= []
     indexB= ['МОДЕЛИРОВАНИЕ']
     console.log(esModel.structure)
@@ -1040,17 +1071,44 @@ const RenderOptionsMenu = selectedIndex => {
         }
       }
       //onChange={}  console.log(esModel.TM[x].name)
-      indexB.push (        
-        <div>ТЕРМ - МНОЖЕСТВО ( {esModel.structure['input'][i]} ) ({nameTM}):
-        <select className="custom-select" id={esModel.structure['input'][i]} defaultValue={esModel.TM[number].termsNames[0]}>
-           {Object.values(esModel.TM[number].termsNames).map((option, index) =>
-             <option key={ index} id={option} value = {option}>{option}</option>
-          ) }
-      </select>
-       </div>)
+
+if(esModel.zapros[esModel.structure['input'][i]] == undefined)
+      esModel.methods.DefZapros(esModel.structure['input'][i])
+        //решаем вывести  выпадающий список или поле ввода
+        if (Object.keys(esModel.TM[number].coords[0]).length == 2 )
+        {
+          indexB.push (        
+            <div>ТЕРМ - МНОЖЕСТВО ( {esModel.structure['input'][i]} ) ({nameTM}):
+            <select className="custom-select" id={esModel.structure['input'][i]} onChange={ChangeZapros} defaultValue = {esModel.TM[esModel.structure['input'][i]-1].termsNames["term"+esModel.zapros[esModel.structure['input'][i]]]}>
+               {Object.values(esModel.TM[number].termsNames).map((option, index) =>
+                 <option key={ index} id={option} value = {option}>{option}</option>
+              ) }
+          </select>
+           </div>)
+        }
+        else {
+indexB.push (        
+  <div>ТЕРМ - МНОЖЕСТВО ( {esModel.structure['input'][i]} ) ({nameTM}):
+ <input type="text" 
+            className="form-control" 
+            placeholder="..." 
+            name ={esModel.structure['input'][i]}
+            onChange={ChangeZaprosInput}/ >
+ </div>)
+
+        }
+      console.log(esModel.TM[number].coords)
+     
     }    
+    
+    indexB.push ( <div><button  onClick={SendXmlModelling} > МОДЕЛИРОВАТЬ</button></div>)
+   if(typeof data == "string")
+    indexB.push (<div>{data} </div>) 
+    //{!dataS ? "Loading data..." : dataS} 
     setindexBodyHtml2(indexB) 
-  }
+    
+    }
+
 const changeSelectedTMName = event => {   
   input_Name = event.target.id
 if(event.target.id.split("_")[0].match(/[a-zA-Z]+/g)[0] == "term")
@@ -1271,8 +1329,7 @@ let inp_termMn_1 = 8;
     <button  onClick={RenderOptionsMenu} >OPTIONS</button>
     <button  onClick={RenderModelingMenu} > MODELING</button> 
     <input type="file" onChange={handleFileSelect}/>
-    <button  onClick={SendXmlModelling} > TEST_POST</button>
-    <button type="button"  onClick={handleSubmit} /> 
+    <button type="button"  onClick={handleSubmit}> Загрузить </button> 
      
      
   <div class="Blochek" > <Graph id="graph" getNetwork={(network) => 
@@ -1281,7 +1338,7 @@ let inp_termMn_1 = 8;
   }}
    graph={esModel.graph} options={options} events={esModel.events} style={{ width: "800px", height: "600px",position: "absolute",right: "0",border: "solid" }} /></div>
     <div class="blockMy" >   {indexBodyHtml2}
-    {!data ? "Loading data..." : data}
+    
      </div >    
      </div>     
       );

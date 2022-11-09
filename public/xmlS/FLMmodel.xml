@@ -1,111 +1,137 @@
 <TM>
   <id>0</id>
-  <name></name>
+  <name>один</name>
   <termsCount>2</termsCount>
   <termsNames>
-    <term1></term1>
-    <term2></term2>
+    <term1>один_1</term1>
+    <term2>один_2</term2>
   </termsNames>
   <coords>
-    <x1>0</x1>
-    <y1>0</y1>
-    <x2>0</x2>
+    <x1>1</x1>
+    <y1>1</y1>
+    <x2>1.1</x2>
     <y2>1</y2>
-    <x3>1</x3>
-    <y3>1</y3>
-    <x4>1</x4>
-    <y4>0</y4>
+    <x3>1.6</x3>
+    <y3>0</y3>
   </coords>
   <coords>
-    <x1>1</x1>
+    <x1>1.1</x1>
     <y1>0</y1>
-    <x2>1</x2>
+    <x2>1.6</x2>
     <y2>1</y2>
     <x3>2</x3>
     <y3>1</y3>
-    <x4>2</x4>
-    <y4>0</y4>
   </coords>
   <plotsColors>#000000</plotsColors>
   <plotsColors>#000000</plotsColors>
 </TM>
 <TM>
   <id>1</id>
-  <name></name>
+  <name>два</name>
   <termsCount>2</termsCount>
   <termsNames>
-    <term1></term1>
-    <term2></term2>
+    <term1>два_1</term1>
+    <term2>два_2</term2>
   </termsNames>
   <coords>
-    <x1>0</x1>
-    <y1>0</y1>
-    <x2>0</x2>
-    <y2>1</y2>
-    <x3>1</x3>
-    <y3>1</y3>
-    <x4>1</x4>
-    <y4>0</y4>
+    <x1>1</x1>
+    <y1>1</y1>
   </coords>
   <coords>
-    <x1>1</x1>
-    <y1>0</y1>
-    <x2>1</x2>
-    <y2>1</y2>
-    <x3>2</x3>
-    <y3>1</y3>
-    <x4>2</x4>
-    <y4>0</y4>
+    <x1>2</x1>
+    <y1>1</y1>
   </coords>
   <plotsColors>#000000</plotsColors>
   <plotsColors>#000000</plotsColors>
 </TM>
 <TM>
   <id>2</id>
-  <name></name>
+  <name>три</name>
   <termsCount>2</termsCount>
   <termsNames>
-    <term1></term1>
-    <term2></term2>
+    <term1>три_1</term1>
+    <term2>три_2</term2>
   </termsNames>
   <coords>
-    <x1>0</x1>
-    <y1>0</y1>
-    <x2>0</x2>
-    <y2>1</y2>
-    <x3>1</x3>
-    <y3>1</y3>
-    <x4>1</x4>
-    <y4>0</y4>
+    <x1>1</x1>
+    <y1>1</y1>
   </coords>
   <coords>
+    <x1>2</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<TM>
+  <id>3</id>
+  <name>четыре</name>
+  <termsCount>2</termsCount>
+  <termsNames>
+    <term1>четыре_1</term1>
+    <term2>четыре_2</term2>
+  </termsNames>
+  <coords>
     <x1>1</x1>
-    <y1>0</y1>
-    <x2>1</x2>
-    <y2>1</y2>
-    <x3>2</x3>
-    <y3>1</y3>
-    <x4>2</x4>
-    <y4>0</y4>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<TM>
+  <id>4</id>
+  <name>пять</name>
+  <termsCount>2</termsCount>
+  <termsNames>
+    <term1>пять_1</term1>
+    <term2>пять_2</term2>
+  </termsNames>
+  <coords>
+    <x1>1</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>1</y1>
   </coords>
   <plotsColors>#000000</plotsColors>
   <plotsColors>#000000</plotsColors>
 </TM>
 <pravila_end>
-  <n0 />
-  <n1 />
-  <n2>1_1...1_1</n2>
-  <n2>1_2...1_1</n2>
-  <n2>2_1...1_1</n2>
-  <n2>2_2...1_1</n2>
+  <n0></n0>
+  <n1></n1>
+  <n2></n2>
+  <n3></n3>
+  <n4>1_1_1...1_1</n4>
+  <n4>1_1_2...1_1</n4>
+  <n4>1_2_1...1_1</n4>
+  <n4>1_2_2...1_1</n4>
+  <n4>2_1_1...1_1</n4>
+  <n4>2_1_2...1_1</n4>
+  <n4>2_2_1...1_1</n4>
+  <n4>2_2_2...1_1</n4>
+  <n5>1...1_1</n5>
+  <n5>2...1_1</n5>
 </pravila_end>
 <pravila_temp>
-  <n0 />
-  <n1 />
-  <n2>1_1...1_1</n2>
-  <n2>1_2...1_1</n2>
-  <n2>2_1...1_1</n2>
-  <n2>2_2...1_1</n2>
+  <n0></n0>
+  <n1></n1>
+  <n2></n2>
+  <n3></n3>
+  <n4>1_1_1...1_1</n4>
+  <n4>1_1_2...1_1</n4>
+  <n4>1_2_1...1_1</n4>
+  <n4>1_2_2...1_1</n4>
+  <n4>2_1_1...1_1</n4>
+  <n4>2_1_2...1_1</n4>
+  <n4>2_2_1...1_1</n4>
+  <n4>2_2_2...1_1</n4>
+  <n5>1...1_1</n5>
+  <n5>2...1_1</n5>
 </pravila_temp>
 <graph>
   <nodes>
@@ -117,23 +143,9 @@
       <size>10</size>
     </font>
     <size>30</size>
-    <label></label>
-    <title></title>
-    <shape>dot</shape>
-    <physics>false</physics>
-    <group>3</group>
-  </nodes>
-  <nodes>
-    <x>0</x>
-    <y>-100</y>
-    <color>#FF0000</color>
-    <id>2</id>
-    <font>
-      <size>10</size>
-    </font>
-    <size>30</size>
-    <label></label>
-    <title></title>
+    <label>один</label>
+    <title>один_1
+один_2</title>
     <shape>dot</shape>
     <physics>false</physics>
     <group>3</group>
@@ -142,35 +154,96 @@
     <x>0</x>
     <y>0</y>
     <color>#008000</color>
+    <id>2</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>два</label>
+    <title>два_1
+два_2</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>150</x>
+    <y>0</y>
+    <color>#008000</color>
     <id>3</id>
     <font>
       <size>10</size>
     </font>
     <size>30</size>
-    <label></label>
-    <title></title>
+    <label>три</label>
+    <title>три_1
+три_2</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>-75</x>
+    <y>-100</y>
+    <color>#DA70D6</color>
+    <id>4</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>четыре</label>
+    <title>четыре_1
+четыре_2</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>0</x>
+    <y>-200</y>
+    <color>#FF0000</color>
+    <id>5</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>пять</label>
+    <title>пять_1
+пять_2</title>
     <shape>dot</shape>
     <physics>false</physics>
     <group>3</group>
   </nodes>
   <edges>
     <from>1</from>
-    <to>2</to>
-    <id>47554818-0939-4a37-a0d4-743ae643c664</id>
+    <to>4</to>
+    <id>621efb02-8f84-4d14-afa4-94af5eec3b0f</id>
+  </edges>
+  <edges>
+    <from>2</from>
+    <to>4</to>
+    <id>4035e22d-329c-48e1-9db6-ab97463c401c</id>
   </edges>
   <edges>
     <from>3</from>
-    <to>2</to>
-    <id>c5fc5bdb-31cd-4a2a-ac3d-d6f145bb6908</id>
+    <to>4</to>
+    <id>8f83c12b-91e3-4829-8d2a-b570d59b7edc</id>
+  </edges>
+  <edges>
+    <from>4</from>
+    <to>5</to>
+    <id>313d25e2-9d7a-415f-851b-c9d480768be9</id>
   </edges>
 </graph>
-<counter>3</counter>
+<counter>5</counter>
 <options>
   <Name></Name>
   <Author></Author>
 </options>
 <structure>
+  <n_1>4</n_1>
   <n_input>1</n_input>
+  <n_input>2</n_input>
   <n_input>3</n_input>
-  <n_output>2</n_output>
+  <n_output>5</n_output>
 </structure>
