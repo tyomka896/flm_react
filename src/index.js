@@ -295,11 +295,12 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
     return "A XHR request is pending, are you sure you want to leave ?";
 }
   const [dataS, setData] = useState(null)
+  /*
   useEffect(() => {
     fetch('/api')
     .then(response => response.json()
     .then(response => setData(response.message)))
-  } )
+  } )*/
   const [esModel, setEsModel] = useState({
     zapros :{},
     options: {
@@ -967,21 +968,24 @@ function XmlOnServer()
 {
 //let f = new File("./temp.xml")
 const iconv = require('iconv-lite');
+const encodedData =  iconv.decode(Buffer.from(xmlFiles), 'utf-8')//windows-1251 //Buffer.from(response.data)
+const parser = new XMLParser()
+let jObj = parser.parse(encodedData)
+console.log(jObj);
+/*
+
 const axios = require('axios').default;
 axios.get("/xmlS/filedddd.xml", {  
     responseType: 'arraybuffer',
     responseEncoding: 'binary'  
 
 }).then((response) => {
-  const encodedData =  iconv.decode(Buffer.from(response.data), 'utf-8')//windows-1251
-  const parser = new XMLParser()
-  let jObj = parser.parse(encodedData)
-  console.log(jObj);
+
 
 })
 .catch((response) => {
   console.log('FAILURE!!'+response);
-}); 
+}); */
 }
 
 const changeTermName = event => {    
@@ -1259,29 +1263,20 @@ setXmlName( ""+xmlFiles.name)
  const handleSubmit =(event) => {
 
 event.preventDefault();
-    const data = new FormData()
-    data.append('file', xmlFiles)
-    axios.post("http://localhost:8000/upload", data, { 
-       // receive two    parameter endpoint url ,form data
-   })
- .then(res => { // then print response status
-  
-  setXmlName( ""+xmlFiles.name)
-  
+
 const iconv = require('iconv-lite');
-const axios = require('axios').default;
-axios.get("/xmlS/FLMmodel.xml", {  
-    responseType: 'arraybuffer',
-    responseEncoding: 'binary'  
+const fileToArrayBuffer = require('file-to-array-buffer')
+const reader = new FileReader()
+var encodedData = ""
 
-}).then((response) => {
-  const encodedData =  iconv.decode(Buffer.from(response.data), 'utf-8')//windows-1251
-  const parser = new XMLParser()
-  let jObj = parser.parse(encodedData)
-
-  setEsModel(esModel)
-  
-  if(jObj.TM.length == undefined)
+const parser = new XMLParser()
+reader.readAsText(xmlFiles)
+reader.onload = _event => {
+    const content = _event.target.result
+    let jObj = parser.parse(content)
+    
+    console.log(jObj)
+    if(jObj.TM.length == undefined)
   {esModel.TM =[]
    esModel.TM[0] = jObj.TM
   }
@@ -1293,8 +1288,6 @@ axios.get("/xmlS/FLMmodel.xml", {
   let tempStructure = {}
   for (let i =0; i < Object.keys(jObj.structure).length; i++)
   {   
-//jObj.structure[Object.keys(jObj.structure)[i].split('_')[1]] = jObj.structure[Object.keys(jObj.structure)[i]]
-  //  delete jObj.structure[Object.keys(jObj.structure)[i]]
   tempStructure[Object.keys(jObj.structure)[i].split('_')[1]] = jObj.structure[Object.keys(jObj.structure)[i]]
   }
   
@@ -1306,13 +1299,9 @@ axios.get("/xmlS/FLMmodel.xml", {
   }
   setEsModel(esModel)  
   RenderOptionsMenu()
-
-})
-.catch((response) => {
-  console.log('FAILURE!!'+response);
-})}) 
+    // Do the parsing with content
+} 
   }
-
   const handleFileSelect = (event) => {
     setXmlFiles(event.target.files[0])
   }
@@ -1329,7 +1318,7 @@ let inp_termMn_1 = 8;
     <button  onClick={RenderOptionsMenu} >OPTIONS</button>
     <button  onClick={RenderModelingMenu} > MODELING</button> 
     <input type="file" onChange={handleFileSelect}/>
-    <button type="button"  onClick={handleSubmit}> Загрузить </button> 
+    <button type="button"  onClick={handleSubmit}> Загрузить  </button> 
      
      
   <div class="Blochek" > <Graph id="graph" getNetwork={(network) => 
