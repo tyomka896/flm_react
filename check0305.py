@@ -11,15 +11,13 @@ import io
 from itertools import product
 import json
 from os import path
-if len(sys.argv) != 3:
-    print("???")
-    sys.exit()
+
 
 inputValues =json.loads(sys.argv[1])#json.loads(sys.argv[1])#{1:'2',2:'-27.5',3:'-17.5'}
 fileName = sys.argv[2]#sys.argv[2] #'d:/pyshell/utep_dva_nl.xml'
 
 
-# с комментариями - True / без комментариев - False
+# Г± ГЄГ®Г¬Г¬ГҐГ­ГІГ Г°ГЁГїГ¬ГЁ - True / ГЎГҐГ§ ГЄГ®Г¬Г¬ГҐГ­ГІГ Г°ГЁГҐГў - False
 isWithComments = False
 
 def startModelling(path,uslovie, comment, var):
@@ -67,7 +65,7 @@ def startModelling(path,uslovie, comment, var):
         with open(fileNameNew , 'a') as f:
             f.write('\n</FLMMODEL>\n')
             f.close()
-        # ПАРСИНГ XML
+        # ГЏГЂГђГ‘Г€ГЌГѓ XML
     xml = ET.parse(fileNameNew )
     ES_counter = int(xml.find('./counter').text)
 
@@ -112,7 +110,7 @@ def startModelling(path,uslovie, comment, var):
     for i in inputValues.keys():
         GetMinKoeffInputLevel(i, inputValues[i],PlotsArr[i][1].lines)
     tm = {}
-    # если несколько вариантов просчета
+    # ГҐГ±Г«ГЁ Г­ГҐГ±ГЄГ®Г«ГјГЄГ® ГўГ Г°ГЁГ Г­ГІГ®Гў ГЇГ°Г®Г±Г·ГҐГІГ 
     # correct
     if(len(myPravila2.keys())>0):    
         if(len(myPravila2.keys())==1):
@@ -143,7 +141,7 @@ def startModelling(path,uslovie, comment, var):
                                     return answer[0]
                   
         if(len(myPravila2.keys())>1):
-            #мешаем правила
+            #Г¬ГҐГёГ ГҐГ¬ ГЇГ°Г ГўГЁГ«Г 
             archives = []
             for o in myPravila2.keys():
                 ar = []
@@ -151,7 +149,7 @@ def startModelling(path,uslovie, comment, var):
                     ar.append(str(o)+':'+str(myPravila2[o][m]))
                 archives.append(ar)  
             for i in Combinefunc(archives[0],archives[1]):
-                #  условие
+                #  ГіГ±Г«Г®ГўГЁГҐ
                 uslovie = "If "
                 for y in i.split('__'):
                     uslovie +=  inputTM[str(y.split(':')[0])].label + "(" + inputTM[str(y.split(':')[0])].termsName[int(y.split(':')[1].split('_')[0])-1]  +"), "
@@ -212,7 +210,7 @@ def GetMinKoeffInputLevel(positionTM, value, input):
             dublicat[i+1] = archive[i]
             dublArr.append(archive[i])  
     dublicatTemp = {}
-    # проверить на повторение максимального значения
+    # ГЇГ°Г®ГўГҐГ°ГЁГІГј Г­Г  ГЇГ®ГўГІГ®Г°ГҐГ­ГЁГҐ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® Г§Г­Г Г·ГҐГ­ГЁГї
     for i in dublicat.keys():
         if(   dublicat[i] == dublArr[len(dublArr) - 1]   ):
             dublicatTemp[i] = dublicat[i]            
@@ -258,7 +256,7 @@ class TermMnogestvo:
             for i in range(0, len(Pravila)):
                 if (re.findall(r'\d+', Pravila[i].tag)[0] == str(termMnogPosition)):
                     self.pravila[Pravila[i].text.split('...')[0]] = Pravila[i].text.split('...')[1]     
-        #запрос к правилам
+        #Г§Г ГЇГ°Г®Г± ГЄ ГЇГ°Г ГўГЁГ«Г Г¬
         zapros = ''
         koeff = []
         if(self.level!= 'inp_0'):
@@ -269,9 +267,9 @@ class TermMnogestvo:
                     zapros+="_"
             self.outValue = self.pravila[zapros]
             myPravila[int(termMnogPosition)] = ""+str(self.outValue.split('_')[0])+'_'+str(float(self.outValue.split('_')[1]) *  float(min(koeff)))            
-       #матрциа смежности
+       #Г¬Г ГІГ°Г¶ГЁГ  Г±Г¬ГҐГ¦Г­Г®Г±ГІГЁ
         self.adjMatrix = [1,1]
-        #матрциа правил
+        #Г¬Г ГІГ°Г¶ГЁГ  ГЇГ°Г ГўГЁГ«
         self.dictRules = []     
         self.label = TMs[int(termMnogPosition)-1].find('name').text
         self.termsCount = TMs[int(termMnogPosition) - 1].find('termsCount').text  
@@ -279,7 +277,7 @@ class TermMnogestvo:
             self.termsName.append(TMs[int(termMnogPosition) - 1]
                                     .find('termsNames')
                                     .find('term'+str(i+1)).text)
-            #Сохранение координат графиков
+            #Г‘Г®ГµГ°Г Г­ГҐГ­ГЁГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ ГЈГ°Г ГґГЁГЄГ®Гў
         coords = TMs[int(termMnogPosition)-1].findall('coords')
         iksy_1 = []
         ygriki_1 = []
@@ -294,9 +292,6 @@ class TermMnogestvo:
             self.coord['x'+str(i+1)] = tuple(iksy_1)
             self.coord['y'+str(i+1)] = tuple(ygriki_1)
         pass
-    
-    
-startModelling(fileName,inputValues, isWithComments, 2)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3
