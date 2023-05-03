@@ -296,7 +296,7 @@ class TermMnogestvo:
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("???")
-        sys.exi()
+        sys.exit()
     result = startModelling(fileName, inputValues, isWithComments, 2)
     sys.stdout.write(result)
     sys.exit()
