@@ -294,7 +294,7 @@ class TermMnogestvo:
         pass
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3
+    if len(sys.argv) != 3:
         print("???")
         sys.exi()
     result = startModelling(fileName, inputValues, isWithComments, 2)
