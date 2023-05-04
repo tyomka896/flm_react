@@ -9,6 +9,7 @@ import { mkdirSync } from "fs";
 
 
 export  default function Table(model, levelPravil, changeList, changeCoeff,selectedTM) {
+
   let tempus=[[]]
   let gettingLevelPravil = levelPravil
  
@@ -213,12 +214,16 @@ shapka.push(<th>{doKokogo[i].name}</th>)
 
   }
 
- console.log(otKokogo[0].termsCount)
+ 
   for(let i = 0; i < otKokogo.length; i++)
 {    
+ 
   for(let j = 0; j < otKokogo[i].termsCount; j++)
   {     
-    let termName = eval("otKokogo[i].termsNames['term"+(j+1)+"']")     
+    console.log(otKokogo[0].termsNames['term1'])   
+        console.log(i )//+ "   " + eval("otKokogo[i].termsNames['term"+(j+1)+"']") )
+        console.log(j+1 )
+    let termName = eval("otKokogo[" +i+"].termsNames['term"+(j+1)+"']")     
     tempArray[j] = termName       
   } 
     termsInputArray2[i]=(tempArray)    
@@ -238,7 +243,7 @@ termsInputArray2.map((el)=> (el.push("...")))
 
     for(let j = 0; j <doKokogo[i].termsCount; j++)
     {     
-      let termName = eval("doKokogo[i].termsNames['term"+(j+1)+"']")     
+      let termName = eval("doKokogo["+i+"].termsNames['term"+(j+1)+"']")     
       tempArray[j] = {id: (j+1), name :termName}     
 
     } 
@@ -251,7 +256,7 @@ for(let i = 0; i < doKokogo.length; i++)
 {    let tempArray=[]
   for(let j = 0; j < doKokogo[i].termsCount; j++)
   {     
-    let termName = eval("doKokogo[i].termsNames['term"+(j+1)+"']")     
+    let termName = eval("doKokogo["+i+"].termsNames['term"+(j+1)+"']")     
     tempArray[j] = {id: (j+1), name :termName}     
 
   } 

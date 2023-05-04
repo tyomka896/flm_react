@@ -897,7 +897,7 @@ if (esModel.regimZaprosa == 1)
   } 
 if (esModel.regimZaprosa == 2)
 {
-
+console.log(esModel.TM[esModel.TM.length-1].termsNames["term"+res.data[0]])
     RenderModelingMenu(esModel.TM[esModel.TM.length-1].termsNames["term"+res.data[0]]+ " с вероятностью " +res.data[1])
 
 }
