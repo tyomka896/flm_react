@@ -294,7 +294,7 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
   window.onbeforeunload = function() {
     return "A XHR request is pending, are you sure you want to leave ?";
 }
-  const [dataS, setData] = useState(null)
+  const [dataS, setData] = useState()
   /*
   useEffect(() => {
     fetch('/api')
@@ -302,6 +302,7 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
     .then(response => setData(response.message)))
   } )*/
   const [esModel, setEsModel] = useState({
+    regimZaprosa:1,
     zapros :{},
     options: {
       Name:'',
@@ -351,6 +352,7 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
         RenderSelectedTM(nodes[0]-1)        
       }     
       },
+    
       doubleClick: ({ pointer: { canvas } }) => {
       let pos = networks.network.getPositions()      
         for (let i = 0; i<esModel.graph.nodes.length; i++ )
@@ -369,15 +371,21 @@ if((String(esModel.graph.nodes[i].color) == "#FF0000" || String(esModel.graph.no
     },
     methods:
     
-    {  DefZapros:(TmNumber) =>
+    { 
+      changeRegimVivoda: (value) => {
+        esModel.regimZaprosa = value
+        setEsModel(esModel)
+        console.log(value)
+        
+      },
+      
+      DefZapros:(TmNumber) =>
       {
         esModel.zapros[String(TmNumber)] = "1"
         setEsModel(esModel)
       },
       SetZapros:(TmNumber, value) =>
-      {
-
-        
+      {        
         esModel.zapros[String(TmNumber)] = value
         setEsModel(esModel)
         console.log(esModel.zapros)
@@ -877,12 +885,26 @@ let tempStructure = {} // esModel.structure
     const data = new FormData()
     data.append('zapros', JSON.stringify(zapros))
     data.append('file', file)
-    axios.post("https://aesfu.ru/api/study/flm-builder", data, { 
+    axios.post("https://aesfu.ru/api/study/flm-builder", data, { //https://aesfu.ru/api/study/flm-builder
    })
  .then(res => { 
-  console.log(res.data.length)
-   setData(res.data) 
-   RenderModelingMenu(res.data)
+  console.log(dataS)
+if (esModel.regimZaprosa == 1)
+  {
+    RenderModelingMenu("[" + res.data[0] + ","+res.data[1]+"]")
+    
+
+  } 
+if (esModel.regimZaprosa == 2)
+{
+
+    RenderModelingMenu(esModel.TM[esModel.TM.length-1].termsNames["term"+res.data[0]]+ " с вероятностью " +res.data[1])
+
+}
+   
+
+   
+
   })  
 
 }
@@ -1048,6 +1070,18 @@ const ChangeZapros = selectedIndex => {
  esModel.methods.SetZapros(selectedIndex.target.id, String(selectedIndex.target.selectedIndex+1))
 }
 
+
+//режим вывода в окне моделирования
+const ChangeRegimZaprosa = selectedIndex => {
+  
+  // console.log(selectedIndex.target.id + " value = "+String(selectedIndex.target.selectedIndex+1))
+  console.log(selectedIndex.target.value);
+  esModel.methods.changeRegimVivoda(selectedIndex.target.value)
+
+ 
+  //esModel.methods.SetZapros(selectedIndex.target.id, String(selectedIndex.target.selectedIndex+1))
+ }
+ 
 const ChangeZaprosInput = selectedIndex => {
   
  //console.log(selectedIndex.target.name+"   "+String(selectedIndex.target.value))
@@ -1060,6 +1094,12 @@ const ChangeZaprosInput = selectedIndex => {
     let indexB= []
     indexB= ['МОДЕЛИРОВАНИЕ']
     console.log(esModel.structure)
+     //onChange={}  console.log(esModel.TM[x].name)
+     indexB.push(<div><select onChange={ChangeRegimZaprosa} >
+      <option value="1">Значение</option>
+      <option value="2">Значение+Расшифровка</option> 
+    </select>
+    </div>);
     
     for(let i =0; i < esModel.structure['input'].length; i++)
     {
@@ -1074,7 +1114,7 @@ const ChangeZaprosInput = selectedIndex => {
           number = x
         }
       }
-      //onChange={}  console.log(esModel.TM[x].name)
+     
 
 if(esModel.zapros[esModel.structure['input'][i]] == undefined)
       esModel.methods.DefZapros(esModel.structure['input'][i])
@@ -1098,18 +1138,21 @@ indexB.push (
             placeholder="..." 
             name ={esModel.structure['input'][i]}
             onChange={ChangeZaprosInput}/ >
+
+
  </div>)
 
         }
-      console.log(esModel.TM[number].coords)
+     
      
     }    
     
     indexB.push ( <div><button  onClick={SendXmlModelling} > МОДЕЛИРОВАТЬ</button></div>)
-   if(typeof data == "string")
+
+    console.log( data)
+   if(typeof data == "string")   
     indexB.push (<div>{data} </div>) 
-    //{!dataS ? "Loading data..." : dataS} 
-    setindexBodyHtml2(indexB) 
+       setindexBodyHtml2(indexB) 
     
     }
 

@@ -1,8 +1,7 @@
-const express = require('express');
-const app = express();
+var express = require('express');
+var app = express();
 var multer = require('multer')
 var cors = require('cors');
-var mess = ""
 app.use(cors())
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -26,7 +25,6 @@ app.post('/upload',function(req, res) {
     })
 
 });
-
 app.listen(8000, function() {
 
     console.log('server running on port 8000');

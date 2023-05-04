@@ -3,7 +3,7 @@ const {PythonShell} = require("python-shell")
 
 let options = {
     scriptPath: 'D:/pyshell',
-    args:["12", 'John'],
+    args:[{1:'2',2:'2'}, 'd:/model_1.xml'],
     pythonOptions:['-u'],
 
 };
@@ -39,7 +39,7 @@ let pop = ""+String(res[0])
 //console.log(iconv.decode(Buffer.from(st,'binary'), 'utf8').toString())
 
 
-let strong = "привет" + res[0]
+let strong = "пїЅпїЅпїЅпїЅпїЅпїЅ" + res[0]
 let lett = iconv.decode(iconv.encode(Buffer.from(strong, "binary"), 'utf8'), 'utf8').toString();
 var message = iconv.decode(Buffer.from(strong), "win1251")
  message = iconv.encode(message, "win1251").toString();
