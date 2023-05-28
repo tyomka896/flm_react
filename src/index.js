@@ -898,7 +898,7 @@ if (esModel.regimZaprosa == 1)
 if (esModel.regimZaprosa == 2)
 {
 console.log(esModel.TM[esModel.TM.length-1].termsNames["term"+res.data[0]])
-    RenderModelingMenu(esModel.TM[esModel.TM.length-1].termsNames["term"+res.data[0]]+ " с вероятностью " +res.data[1])
+    RenderModelingMenu(esModel.TM[esModel.graph.nodes.findIndex((obj) => obj.color === '#FF0000')].termsNames["term"+res.data[0]]+ " с вероятностью " +res.data[1])
 
 }
    
@@ -1300,8 +1300,13 @@ setXmlName( ""+xmlFiles.name)
 }
 
 
+function testINFO()
+{
+const index = esModel.graph.nodes.findIndex((obj) => obj.color === '#FF0000')
+console.log(index); // 1
 
-
+ ///esModel.graph.nodes.map((node) => {if (node.color == "#FF0000") console.log ()   })
+ }
 
  const handleSubmit =(event) => {
 
@@ -1362,7 +1367,6 @@ let inp_termMn_1 = 8;
     <button  onClick={RenderModelingMenu} > MODELING</button> 
     <input type="file" onChange={handleFileSelect}/>
     <button type="button"  onClick={handleSubmit}> Загрузить  </button> 
-     
      
   <div class="Blochek" > <Graph id="graph" getNetwork={(network) => 
    {networks.network= network
