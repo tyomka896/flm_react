@@ -888,18 +888,23 @@ let tempStructure = {} // esModel.structure
     axios.post("https://aesfu.ru/api/study/flm-builder", data, { //https://aesfu.ru/api/study/flm-builder
    })
  .then(res => { 
-  console.log(dataS)
 if (esModel.regimZaprosa == 1)
   {
-    RenderModelingMenu("[" + res.data[0] + ","+res.data[1]+"]")
-    
+    var temp = res.data
+    var str = ""
+    temp.map((p) => {str +=("[" + p[0] + ","+p[1]+"] \n") })
+    // RenderModelingMenu("[" + res.data[0] + ","+res.data[1]+"]")
+    RenderModelingMenu(str)
 
   } 
 if (esModel.regimZaprosa == 2)
 {
-console.log(esModel.TM[esModel.TM.length-1].termsNames["term"+res.data[0]])
-    RenderModelingMenu(esModel.TM[esModel.graph.nodes.findIndex((obj) => obj.color === '#FF0000')].termsNames["term"+res.data[0]]+ " с вероятностью " +res.data[1])
-
+console.log(esModel.structure.output)
+console.log(esModel.TM[esModel.structure.output[0]  - 1])
+var temp =  res.data
+var str = ""
+temp.map((item, index) => {str +=(esModel.TM[esModel.structure.output[index]  - 1].termsNames["term"+item[0]]+ " с вероятностью " +item[1] + "  ") })
+    RenderModelingMenu(str)
 }
    
 
