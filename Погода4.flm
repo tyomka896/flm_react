@@ -1,0 +1,408 @@
+<TM>
+  <id>0</id>
+  <name>Осадки</name>
+  <termsCount>3</termsCount>
+  <termsNames>
+    <term1>Нет</term1>
+    <term2>Дождь</term2>
+    <term3>Снег</term3>
+  </termsNames>
+  <coords>
+    <x1>1</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>3</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#ff0000</plotsColors>
+  <plotsColors>#275700</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<TM>
+  <id>1</id>
+  <name>Температура</name>
+  <termsCount>3</termsCount>
+  <termsNames>
+    <term1>Холодно</term1>
+    <term2>Нормально</term2>
+    <term3>Жарко</term3>
+  </termsNames>
+  <coords>
+    <x1>-50</x1>
+    <y1>1</y1>
+    <x2>5</x2>
+    <y2>1</y2>
+    <x3>8</x3>
+    <y3>0</y3>
+    <x4>50</x4>
+    <y4>0</y4>
+  </coords>
+  <coords>
+    <x1>-50</x1>
+    <y1>0</y1>
+    <x2>5</x2>
+    <y2>0</y2>
+    <x3>8</x3>
+    <y3>1</y3>
+    <x4>12</x4>
+    <y4>1</y4>
+    <x5>14</x5>
+    <y5>0</y5>
+    <x6>50</x6>
+    <y6>0</y6>
+  </coords>
+  <coords>
+    <x1>-50</x1>
+    <y1>0</y1>
+    <x2>12</x2>
+    <y2>0</y2>
+    <x3>14</x3>
+    <y3>1</y3>
+    <x4>50</x4>
+    <y4>1</y4>
+  </coords>
+  <plotsColors>#b30000</plotsColors>
+  <plotsColors>#00ff1e</plotsColors>
+  <plotsColors>#0040ff</plotsColors>
+</TM>
+<TM>
+  <id>2</id>
+  <name>Врем года</name>
+  <termsCount>4</termsCount>
+  <termsNames>
+    <term1>Лето</term1>
+    <term2>Зима</term2>
+    <term3>Весна</term3>
+    <term4>Осень</term4>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>1</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>3</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<TM>
+  <id>3</id>
+  <name>Ожежда</name>
+  <termsCount>3</termsCount>
+  <termsNames>
+    <term1>Пальто</term1>
+    <term2>Футблока</term2>
+    <term3>Шуба</term3>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>1</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>2</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<TM>
+  <id>4</id>
+  <name>В руки</name>
+  <termsCount>2</termsCount>
+  <termsNames>
+    <term1>Зонт</term1>
+    <term2>Ничего</term2>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>1</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<TM>
+  <id>5</id>
+  <name>Обувь</name>
+  <termsCount>2</termsCount>
+  <termsNames>
+    <term1>Одеть</term1>
+    <term2>Нет</term2>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>1</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<TM>
+  <id>6</id>
+  <name>Шапка</name>
+  <termsCount>2</termsCount>
+  <termsNames>
+    <term1>Одеваем</term1>
+    <term2>Не одеваем</term2>
+  </termsNames>
+  <coords>
+    <x1>0</x1>
+    <y1>1</y1>
+  </coords>
+  <coords>
+    <x1>1</x1>
+    <y1>1</y1>
+  </coords>
+  <plotsColors>#000000</plotsColors>
+  <plotsColors>#000000</plotsColors>
+</TM>
+<pravila_end>
+  <n0></n0>
+  <n1></n1>
+  <n2></n2>
+  <n3>1_1...1_1</n3>
+  <n3>1_2...1_1</n3>
+  <n3>1_3...1_1</n3>
+  <n3>2_1...1_1</n3>
+  <n3>2_2...1_1</n3>
+  <n3>2_3...1_1</n3>
+  <n3>3_1...1_1</n3>
+  <n3>3_2...1_1</n3>
+  <n3>3_3...1_1</n3>
+  <n4>1...1_1</n4>
+  <n4>2...1_1</n4>
+  <n4>3...1_1</n4>
+  <n4>4...1_1</n4>
+  <n5>1...1_1</n5>
+  <n5>2...1_1</n5>
+  <n5>3...1_1</n5>
+  <n5>4...1_1</n5>
+  <n6>1...2_0.8</n6>
+  <n6>2...1_0.9</n6>
+  <n6>3...2_0.8</n6>
+  <n6>4...1_0.9</n6>
+  <n7>1...1_0.9</n7>
+  <n7>2...2_0.9</n7>
+  <n7>3...1_1</n7>
+  <n7>4...2_0.9</n7>
+</pravila_end>
+<pravila_temp>
+  <n0></n0>
+  <n1></n1>
+  <n2></n2>
+  <n3>1_1...1_1</n3>
+  <n3>1_2...1_1</n3>
+  <n3>1_3...1_1</n3>
+  <n3>2_1...1_1</n3>
+  <n3>2_2...1_1</n3>
+  <n3>2_3...1_1</n3>
+  <n3>3_1...1_1</n3>
+  <n3>3_2...1_1</n3>
+  <n3>3_3...1_1</n3>
+  <n4>1...1_1</n4>
+  <n4>2...1_1</n4>
+  <n4>3...1_1</n4>
+  <n4>4...1_1</n4>
+  <n5>1...1_1</n5>
+  <n5>2...1_1</n5>
+  <n5>3...1_1</n5>
+  <n5>4...1_1</n5>
+  <n6>1...2_0.8</n6>
+  <n6>2...1_0.9</n6>
+  <n6>3...2_0.8</n6>
+  <n6>4...1_0.9</n6>
+  <n7>1...1_0.9</n7>
+  <n7>2...2_0.9</n7>
+  <n7>3...1_1</n7>
+  <n7>4...2_0.9</n7>
+</pravila_temp>
+<graph>
+  <nodes>
+    <x>-150</x>
+    <y>0</y>
+    <color>#008000</color>
+    <id>1</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>Осадки</label>
+    <title>Нет
+Дождь
+Снег</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>0</x>
+    <y>0</y>
+    <color>#008000</color>
+    <id>2</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>Температура</label>
+    <title>Холодно
+Нормально
+Жарко</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>-75</x>
+    <y>-100</y>
+    <color>#DA70D6</color>
+    <id>3</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>Врем года</label>
+    <title>Лето
+Зима
+Весна
+Осень</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>0</x>
+    <y>-200</y>
+    <color>#FF0000</color>
+    <id>4</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>Ожежда</label>
+    <title>Пальто
+Футблока
+Шуба</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>150</x>
+    <y>-200</y>
+    <color>#FF0000</color>
+    <id>5</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>В руки</label>
+    <title>Зонт
+Ничего</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>300</x>
+    <y>-200</y>
+    <color>#FF0000</color>
+    <id>6</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>Обувь</label>
+    <title>Одеть
+Нет</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <nodes>
+    <x>450</x>
+    <y>-200</y>
+    <color>#FF0000</color>
+    <id>7</id>
+    <font>
+      <size>10</size>
+    </font>
+    <size>30</size>
+    <label>Шапка</label>
+    <title>Одеваем
+Не одеваем</title>
+    <shape>dot</shape>
+    <physics>false</physics>
+    <group>3</group>
+  </nodes>
+  <edges>
+    <from>2</from>
+    <to>3</to>
+    <id>46d0673d-521c-4472-90e3-78e27d50ee11</id>
+  </edges>
+  <edges>
+    <from>1</from>
+    <to>3</to>
+    <id>51643300-e6ae-44ce-b388-bc51d32fde2c</id>
+  </edges>
+  <edges>
+    <from>3</from>
+    <to>4</to>
+    <id>4eaebd78-4506-4d18-ae6f-ef595573e751</id>
+  </edges>
+  <edges>
+    <from>3</from>
+    <to>5</to>
+    <id>49ca43e7-c87f-473f-90cb-aac4174861d1</id>
+  </edges>
+  <edges>
+    <from>3</from>
+    <to>6</to>
+    <id>d017b2c2-ae4a-4440-8a8c-9fe045a7fbe3</id>
+  </edges>
+  <edges>
+    <from>3</from>
+    <to>7</to>
+    <id>f12323ef-622c-4bea-9357-d16a89d9d83e</id>
+  </edges>
+</graph>
+<counter>7</counter>
+<options>
+  <Name></Name>
+  <Author></Author>
+</options>
+<structure>
+  <n_1>3</n_1>
+  <n_input>1</n_input>
+  <n_input>2</n_input>
+  <n_output>4</n_output>
+  <n_output>5</n_output>
+  <n_output>6</n_output>
+  <n_output>7</n_output>
+</structure>
