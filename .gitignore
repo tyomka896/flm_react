@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Othe files
+/*.doc
+/*.docx
+/*.pdf
+/*.ppt
+/*.rar
+/*.zip
+/*.py
+/*.flm
