@@ -43,9 +43,7 @@ function FlmTree() {
             group: 3,
         })
     }
-    function fl() {
-        console.log(networks.network)
-    }
+
     const options = {
         locale: 'ru',
         interaction: {
@@ -103,7 +101,6 @@ function FlmTree() {
                         esModel.methods.UpdatePravila(esModel.graph.nodes[i].id)
                     }
                 }
-                setEsModel(esModel)
                 setEsModel(esModel)
                 networks.network.setData({
                     nodes: esModel.graph.nodes,
@@ -210,7 +207,6 @@ function FlmTree() {
                         1
                     )
                 }
-                console.log(esModel.graph.edges)
                 // esModel.graph.edges.splice(i, 1);
                 for (let i = 0; i < esModel.graph.nodes.length; i++) {
                     if (esModel.graph.nodes[i].id == data.nodes[0]) {
@@ -309,25 +305,11 @@ function FlmTree() {
         },
     }
 
-    //const [contacts, setContacts] = useState(data);
-    const [addFormData, setAddFormData] = useState({
-        fullName: '',
-        address: '',
-        phoneNumber: '',
-        email: '',
-    })
-
-    const [editFormData, setEditFormData] = useState({
-        fullName: '',
-        address: '',
-        phoneNumber: '',
-        email: '',
-    })
-    const [editContactId, setEditContactId] = useState(null)
+  
+    
     const [xmlFiles, setXmlFiles] = useState([])
     const [xmlModeling, setxmlModeling] = useState([])
     const [xmlName, setXmlName] = useState([])
-    const [indexBodyHtml, setindexBodyHtml] = useState([])
 
     var o2x = require('object-to-xml')
     window.onbeforeunload = function () {
@@ -457,7 +439,7 @@ function FlmTree() {
                     if (esModel.graph.nodes[i].color == '#008000') {
                         esModel.graph.nodes[i].y = 0
                         zelen[zelen.length] = i + 1
-                        esModel.graph.nodes[i].x = -300 + zelen.length * 150
+                        esModel.graph.nodes[i].x = -300 + zelen.length * 80
                     }
                     if (esModel.graph.nodes[i].color == '#DA70D6') {
                         esModel.graph.nodes[i].y = -250
@@ -476,7 +458,6 @@ function FlmTree() {
                     pp = []
                     getLevelTMObrabotki(fiolet[i], zelen)
                 }
-                console.log(urovniObrabotki)
                 let numberKey = 50
                 for (var key in urovniObrabotki) {
                     urovniObrabotki[numberKey] = urovniObrabotki[key]
@@ -498,7 +479,7 @@ function FlmTree() {
                                 urovniObrabotki[key][i]
                             ) {
                                 esModel.graph.nodes[y].y = -100 * Number(key)
-                                esModel.graph.nodes[y].x = -225 + 150 * (i + 1)
+                                esModel.graph.nodes[y].x = -225 + 80 * (i + 1)
                             }
                         }
                     }
@@ -508,7 +489,7 @@ function FlmTree() {
                     if (esModel.graph.nodes[i].color == '#FF0000') {
                         esModel.graph.nodes[i].y =
                             Object.keys(urovniObrabotki).length * -100 - 100
-                        esModel.graph.nodes[i].x = -150 + 150 * (outCounter + 1)
+                        esModel.graph.nodes[i].x = -150 + 80 * (outCounter + 1)
                         outCounter++
                     }
                 }
@@ -856,7 +837,16 @@ function FlmTree() {
             },
             ChangeSelectedTMName: (id, name) => {
                 esModel.TM[id].name = String(name)
-                esModel.graph.nodes[id].label = name
+
+
+                let modifiedStr = name.replace(/ /g, "\n")
+                
+                
+               let splitString = "";
+                for (let i = 0; i < name.length; i += 15) {
+                  splitString += name.substr(i, 15) + "\n";
+                }
+                esModel.graph.nodes[id].label = modifiedStr
                 setEsModel(esModel)
                 RenderSelectedTM(Number(id))
                 networks.network.setData({
@@ -1071,7 +1061,7 @@ function FlmTree() {
         let urovniPravil = []
         let okolo = []
         okolo.push(
-            <div class="Blochek">
+            <div class="LayerElement">
                 {Table(esModel, 2, changePravila, changeCoeff, arg)}
             </div>
         )
@@ -1586,7 +1576,8 @@ axios.get("/xmlS/filedddd.xml", {
     <input type="file" id="myFile" onChange={(e)=>UploadXML(e)} />
 */
     return (
-        <div>
+        <div  >
+             <div >
             <button onClick={SaveToXMLOnComputer}>
                 SAVE MODEL TO COMPUTER
             </button>
@@ -1600,9 +1591,9 @@ axios.get("/xmlS/filedddd.xml", {
             <button type="button" style={{ marginLeft: '4px' }}>
                 <a target="_blank" href="https://aesfu.ru/method/flm-builder/instructions">Документация</a>
             </button>
-
-            <div class="Blochek">
-                {' '}
+            </div>
+            <div class="LayerElement"> {indexBodyHtml2}</div>
+            <div class="LayerElement">              
                 <Graph
                     id="graph"
                     getNetwork={(network) => {
@@ -1613,15 +1604,15 @@ axios.get("/xmlS/filedddd.xml", {
                     options={options}
                     events={esModel.events}
                     style={{
-                        width: '800px',
+                        width: '700px',
                         height: '600px',
-                        position: 'absolute',
+                        position: 'flex',
                         right: '0',
-                        border: 'solid',
+                        border: '1px solid',
                     }}
                 />
             </div>
-            <div class="blockMy"> {indexBodyHtml2}</div>
+            
         </div>
     )
 }

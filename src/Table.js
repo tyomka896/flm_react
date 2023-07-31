@@ -1,23 +1,14 @@
-import React, { useState, Fragment } from "react";
-import { nanoid } from "nanoid";
+import React from "react";
 import "./Table.css";
-import data from "./mock-data.json";
 import ReadOnlyRow from "./components/ReadOnlyRow";
-import EditableRow from "./components/EditableRow";
 import ReactDOM from "react-dom";
-import { mkdirSync } from "fs";
-
-
 export  default function Table(model, levelPravil, changeList, changeCoeff,selectedTM) {
 
   let tempus=[[]]
-  let gettingLevelPravil = levelPravil
- 
+  let gettingLevelPravil = levelPravil 
   let select = selectedTM
   if (select == undefined)
   select = 1
- 
-
   console.log(select)
   if(typeof(gettingLevelPravil) != "string")
   {
@@ -36,13 +27,10 @@ export  default function Table(model, levelPravil, changeList, changeCoeff,selec
         };
     }, Array.prototype.push.bind(r))(new Array(args.length));
 let t = r.length
-
-
    for(let i = 0; i < t; i++)
     {
       r[i].unshift(i+1)
-    }
-   
+    }   
     return r;
 }
 function cartesian2(arg) {
@@ -56,10 +44,7 @@ function cartesian2(arg) {
           }
       };
   }, Array.prototype.push.bind(r))(new Array(args.length));
-let t = r.length
-
-
- 
+let t = r.length 
   return r;
 }
 
@@ -68,18 +53,13 @@ let t = r.length
 //это будет названия столбцов 
 //console.log(model.termMnogestvaInputLevel[0])
 
-
-
 let my = model
-
-
 //if(model == null)
 if(my.TM == undefined)
 my = {  
   options: {
     name: "Экспертная система 1",
     urovneyObrabotki: 3,
-
   },
   TM: 
   [
@@ -93,8 +73,7 @@ my = {
                 {x1:2, y1:0, x2:3, y2:1, x3:3, y3:5 },
                 {x1:4, y1:0, x2:5, y2:2, x3:6, y3:2, x4:7, y4:0 } ,       
               ],    
-              plotsColors:['#000000','#000000','#FF00D0',] ,     
-
+              plotsColors:['#000000','#000000','#FF00D0',] ,   
     },
     {
       id: '2',
@@ -105,8 +84,7 @@ my = {
               {x1:2, y1:0, x2:3, y2:1, x3:4, y3:0 },
               {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
             ],    
-            plotsColors:['#00FF00','#E30202','#FF00D0',] ,     
-
+            plotsColors:['#00FF00','#E30202','#FF00D0',] , 
     },
     {
       id: '3',
@@ -118,8 +96,7 @@ my = {
               {x1:4, y1:0, x2:5, y2:1, x3:6, y3:0, } ,        
             ],    
             plotsColors:['#00FF00','#E30202','#FF00D0',] ,     
-
-    },
+              },
   ]  ,
   pravila_end: 
   {1:['1_1...1_1',
@@ -133,9 +110,6 @@ my = {
   '3_1...1_0.9',
   '3_2...1_0.8',
   '3_3...2_0.9',
-  
-
-
   ], }}
  
   const shapka= [];
@@ -165,21 +139,16 @@ if(model.TM!=undefined)
           {
             massivFrom.push(my.graph.edges[i].from )
           }
-        }
-  
+        }  
         for(let i = 0; i <massivFrom.length; i ++)
         {for(let j = 0; j <my.TM.length; j ++)
           {
             if(my.TM[j].id == Number(massivFrom[i]-1))
           {
             otarray.push(my.TM[j])
-          }
-  
-          }
-  
-        }      
-        
-
+          }  
+          } 
+        }       
         for(let i = 0; i < my.TM.length; i ++)
         {
           if(my.TM[i].id == Number(toNode-1))
@@ -189,9 +158,6 @@ if(model.TM!=undefined)
         }
         console.log(doarray)
 }
-  
-
-
   //делаем массив всех термов из терммножества входа
   
   
@@ -221,7 +187,7 @@ shapka.push(<th>{doKokogo[i].name}</th>)
   for(let j = 0; j < otKokogo[i].termsCount; j++)
   {     
     console.log(otKokogo[0].termsNames['term1'])   
-        console.log(i )//+ "   " + eval("otKokogo[i].termsNames['term"+(j+1)+"']") )
+        console.log(i )
         console.log(j+1 )
     let termName = eval("otKokogo[" +i+"].termsNames['term"+(j+1)+"']")     
     tempArray[j] = termName       
@@ -237,8 +203,7 @@ termsInputArray2.map((el)=> (el.push("...")))
   for(let i = 0; i < doKokogo.length; i++)
   {    termsInputArray2.map((el)=> (
 
-    el.push(1)
-    
+    el.push(1)    
     ))
 
     for(let j = 0; j <doKokogo[i].termsCount; j++)
@@ -266,9 +231,7 @@ for(let i = 0; i < doKokogo.length; i++)
 console.log(selectedTM)
 let urPravil = eval("my.pravila_end[" +selectedTM+"]") 
 if(urPravil!= undefined)
-  {
-    
-    
+  {    
     for(let i =0; i<urPravil.length;i++)
     {
       let temp 
@@ -282,27 +245,13 @@ termName = i+1
          termName = eval("otKokogo["+(j-1)+"].termsNames['term"+(temp)+"']") 
        
   }
-  temp2[j] = termName
-
-    }
-
-  tempus[i] = temp2
-  
-    
-
-   
-  
-  
-
-  }}
-
-
-
+  temp2[j] = termName}
+  tempus[i] = temp2    }}
   const ChangeSelect = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const fieldName = event.target.getAttribute("name");
-   let location = event.target.id.split("__")[0].split("_")[0]
+  const fieldName = event.target.getAttribute("name");
+  let location = event.target.id.split("__")[0].split("_")[0]
  let row = event.target.id.split("__")[0].split("_")[1]
  let position = event.target.id.split("__")[1]
  position = position.split("/")[0]
@@ -310,19 +259,15 @@ changeList(row, position,event.target.options[event.target.selectedIndex].id, se
 
 for(let i = 0; i<termsInputArray2[row-1].length; i++ )
 {
-
 if(termsInputArray2[position-1][i] == "...")
 {
   termsInputArray2[position-1][Number(Number(i)+Number(position))] = Number(event.target.options[event.target.selectedIndex].id)
   break
-
 }}};
-
 const ChangeCoeff= (event) => {
   event.preventDefault();
 
 let val = event.target.value
-
  // const fieldName = event.target.getAttribute("name");
  let location = event.target.id.split("__")[0].split("_")[0]
 let row = event.target.id.split("__")[0].split("_")[1]
@@ -351,35 +296,19 @@ let prav
 prav = eval("my.pravila_end")
 console.log(prav)
 
-
-  //console.log(termsInputArray)
-
- //console.log(cartesian(i1)) 
-
   return (
-    <div className="app-container">
+    <div className="LayerElement">
       <form >
         <table>
           <thead>
             <tr>
-                {shapka}
-              
+                {shapka}              
             </tr>
           </thead>
           <tbody>
-            {/*contacts.map((contact) => (
-              <Fragment>
-                { <ReadOnlyRow
-                    contact={contact}
-                    handleEditClick={handleEditClick}
-                    handleDeleteClick={handleDeleteClick}
-                  />}
-              </Fragment>
-            ))*/}
             {
-                      tempus.map((stroke,index) => (
-                        <Fragment>
-                          { <ReadOnlyRow
+                      tempus.map((stroke,index) => (                        
+                           <ReadOnlyRow
                               stroke={stroke}
                                array= {selectedArray}
                                change = {ChangeSelect}
@@ -387,12 +316,7 @@ console.log(prav)
                                index = {index+1}
                                pravila = {prav[Number(select)][index]}   
                                changeCoeff = {ChangeCoeff}                            
-                            />}
-                        </Fragment>
-                        
-                      ))
-
-
+                            /> ))
             }
           </tbody>
         </table>
@@ -402,6 +326,4 @@ console.log(prav)
     </div>
   );
 };
-
-
 ReactDOM.render(<Table />, document.querySelector("#root"));

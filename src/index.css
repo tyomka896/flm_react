@@ -26,15 +26,11 @@ h3{
 form
 {
     float:bottom;
-    margin-left: 50px; 
-}
+    margin-left: 50px;}
 p.dline {
-  line-height: 1.5;
- }
+  line-height: 1.5;}
 p {
-  line-height: 0.9em;
-  
- }
+  line-height: 0.9em;}
 
 .someDiv {
   margin-bottom: 0px;
@@ -43,25 +39,19 @@ p {
   width: 200px;
   height: 100px;
   display: inline-block;
-  margin-left: 10px;
-
-}
+  margin-left: 10px;}
 
 .moyDIV {
-  vertical-align:bottom;
- 
+  vertical-align:bottom; 
   margin-top: 0px;
   margin-bottom: 0px;
   width: 150px;
   height: 2px;
   display: inline-block;
-  margin:0px;
-
-}
+  margin:0px;}
 
 .inp1 {
-  width: 350px;
-}
+  width: 350px;}
 
 
 input {
@@ -69,47 +59,34 @@ margin-left:0px;
 margin-right:10px;
 margin-bottom:0px;
 width: 123px;
-border: 2px solid;
-
-}
+border: 2px solid;}
 
 label.myLabel {
-
-
   font-size: 18px;
-  font-weight: 800;
-}
+  font-weight: 800;}
 input.termsValue {
   margin-left:0px;
   margin-right:0px;
   margin-bottom:10px;
   width: 30px;
-  border: 2px solid;
-  
-  }
+  border: 2px solid;}
   div.inputsPointsPlot {
     margin-left:0;
     margin-right:10px;
     margin-bottom:0px;
     width:1400px;
     border: 0px solid;
-    display: inline-block;
-    
-    }
+    display: inline-block;}
     div.TMselected {
       margin-left:10;
       margin-right:10px;
       margin-bottom:0px;
       width:800x;
-      border: 2px solid;
-      
-      }
+      border: 2px solid; }
 .wrapper {
   padding-top: 5rem;
   margin: 0 auto;
-  width: 800px;
-}
-
+  width: 800px;}
 .borderLand{
 border-color:#c4c4c4 !important;
 border-bottom: 10px solid;
@@ -120,7 +97,21 @@ margin-left:10px;
 }
 .plotInput {
   width: 45px;
-
+}
+div.parent {
+  display: flex;
+  flex-wrap: wrap;
+}
+div.LayerElement {
+  vertical-align:top;
+  width: 800px;
+  margin-left:0px;
+margin-right:0px;
+margin-bottom:0px;
+/* border:1px solid; */
+ display: inline-block; 
+/* display: flex; */
+  flex-wrap: wrap;
 }
 div.blockMy {
   vertical-align:top;
@@ -137,7 +128,6 @@ div.Plot {
   margin-right:0px;
   margin-bottom:2px;
 }
-
 div.mailContent
  { margin: 10px; font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.33; }
 
@@ -148,26 +138,19 @@ div.mailContent
     line-height: 1.5;
   background-color: rgb(252, 249, 249); }
   div.Razrez
-  {background-color: rgb(126, 127, 129);
-
-
-
-  }
+  {background-color: rgb(126, 127, 129); }
   button.odin {
     color:brown;
-    font-weight: bold;
-    
+    font-weight: bold;    
   }
   input.odin {
     width:20px;
     height: 20px;
-    border:1px solid;
-    
+    border:1px solid;    
   }
   button.konec {
     color:green;
-    font-weight: bold;
-    
+    font-weight: bold;    
   }
   
 
