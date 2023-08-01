@@ -315,13 +315,7 @@ function FlmTree() {
     window.onbeforeunload = function () {
         return 'A XHR request is pending, are you sure you want to leave ?'
     }
-    const [dataS, setData] = useState()
-    /*
-  useEffect(() => {
-    fetch('/api')
-    .then(response => response.json()
-    .then(response => setData(response.message)))
-  } )*/
+    
     const [esModel, setEsModel] = useState({
         regimZaprosa: 1,
         zapros: {},
@@ -391,6 +385,17 @@ function FlmTree() {
             showPopup: ({ nodes, edges }) => {},
         },
         methods: {
+            setOUTForTM: (TmNumber, value) =>
+        {
+          console.log("number=" + TmNumber + "   value=" + value)
+          esModel.TM[TmNumber].out =  !esModel.TM[TmNumber].out ? 1: 0
+          setEsModel(esModel)
+          console.log(esModel.TM)
+         RenderSelectedTM(Number(TmNumber))
+
+        },
+
+
             changeRegimVivoda: (value) => {
                 esModel.regimZaprosa = value
                 setEsModel(esModel)
@@ -987,27 +992,45 @@ function FlmTree() {
             })
             .then((res) => {
                 if (esModel.regimZaprosa == 1) {
-                    var temp = res.data
+                    var temp =  res.data
                     var str = ''
-                    temp.map((p) => {
-                        str += '[' + p[0] + ',' + p[1] + '] \n'
-                    })
+                    // temp.map((p) => {
+                    //     str += '[' + p[0] + ',' + p[1] + '] \n'
+                    // })
                     // RenderModelingMenu("[" + res.data[0] + ","+res.data[1]+"]")
-                    RenderModelingMenu(str)
+                    let p = Object.keys(temp).map((key) => (
+                    str+=  key+" "+ temp[key]+ " " 
+                    ))
+
+
+                        console.log(p)
+
+                    RenderModelingMenu(JSON.stringify(temp))
                 }
                 if (esModel.regimZaprosa == 2) {
-                    console.log(esModel.structure.output)
-                    console.log(esModel.TM[esModel.structure.output[0] - 1])
-                    var temp = res.data
+                    // console.log(esModel.structure.output)
+                    // console.log(esModel.TM[esModel.structure.output[0] - 1])
+                    var temp =   res.data
+                    console.log(temp)
                     var str = ''
-                    temp.map((item, index) => {
-                        str +=
-                            esModel.TM[esModel.structure.output[index] - 1]
-                                .termsNames['term' + item[0]] +
-                            ' с вероятностью ' +
-                            item[1] +
-                            '  '
-                    })
+                    // temp.map((item, index) => {
+                    //     str +=
+                    //         esModel.TM[esModel.structure.output[index] - 1]
+                    //             .termsNames['term' + item[0]] +
+                    //         ' с вероятностью ' +
+                    //         item[1] +
+                    //         '  '
+                    // })
+
+                    console.log(esModel)
+                    let p = Object.keys(temp).map((key) => (
+                      // console.log(temp[key])
+                      str+= "|| " + esModel.TM[key-1].name+"->"+  esModel.TM[key-1].termsNames[('term'+temp[key][0])]  + "("+ temp[key][1] + ") "+ " ||" 
+
+
+
+                      ))
+
                     RenderModelingMenu(str)
                 }
             })
@@ -1318,6 +1341,19 @@ axios.get("/xmlS/filedddd.xml", {
         }
     }
 
+
+    const setOUTForTM = (event) => {
+      console.log(event.target.value)
+      input_Name = event.target.id
+      if (event.target.id.split('_')[0].match(/[a-zA-Z]+/g)[0] == 'term') {
+          esModel.methods.setOUTForTM(
+              event.target.id.split('_')[1],
+              event.target.value
+          )
+      }
+  }
+
+
     const RenderSelectedTM = (selectedIndex) => {
         //console.log(esModel)
         let tm
@@ -1329,7 +1365,27 @@ axios.get("/xmlS/filedddd.xml", {
         let points
         inputLevelCounter = 0
         let pravilaButton = []
+        let isOutCheckBox = []
 
+        let nmn = 'term_'+tm
+        for (let i = 0; i < esModel.graph.nodes.length; i++) {
+          if (
+              esModel.graph.nodes[i].id == selectedIndex + 1 &&
+              (esModel.graph.nodes[i].color == '#DA70D6' )
+          ) {
+            isOutCheckBox = [
+              <input
+              type="checkbox"
+              checked={esModel.TM[tm].out}
+              id = {nmn}
+              onChange={setOUTForTM}
+              width = "1"          
+            /> 
+              ]
+          }
+      }
+
+     
         for (let i = 0; i < esModel.graph.nodes.length; i++) {
             if (
                 esModel.graph.nodes[i].id == selectedIndex + 1 &&
@@ -1382,8 +1438,10 @@ axios.get("/xmlS/filedddd.xml", {
                     {' '}
                     УДАЛИТЬ ТЕРМ
                 </button>
+    
                 {pravilaButton}
-                <div></div>
+                {isOutCheckBox}
+           
             </div>
         )
         let TMindex = 0
